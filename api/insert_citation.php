@@ -82,56 +82,68 @@ try {
     }
     $pdo->beginTransaction();
     
-    // Check if driver exists or create new one
+    // Process date of birth and age
+    $dob = !empty($data['date_of_birth']) ? $data['date_of_birth'] : null;
+    $age = !empty($data['age']) ? (int)$data['age'] : null;
+
+    // Check if driver exists or create new one (ALWAYS create/link driver_id!)
     $driver_id = null;
+    $existing_driver = null;
+
+    // Strategy 1: Try to find by license number (if provided)
     if (!empty($data['license_number'])) {
         $stmt = db_query(
             "SELECT driver_id FROM drivers WHERE license_number = ?",
             [$data['license_number']]
         );
         $existing_driver = $stmt->fetch();
+    }
 
-        // Process date of birth and age
-        $dob = !empty($data['date_of_birth']) ? $data['date_of_birth'] : null;
-        $age = !empty($data['age']) ? (int)$data['age'] : null;
+    // Strategy 2: If no license match, try to find by name + DOB (for unlicensed drivers)
+    if (!$existing_driver && !empty($data['last_name']) && !empty($data['first_name'])) {
+        $sql = "SELECT driver_id FROM drivers
+                WHERE last_name = ? AND first_name = ?";
+        $params = [$data['last_name'], $data['first_name']];
 
-        if ($existing_driver) {
-            $driver_id = $existing_driver['driver_id'];
-            // Update driver information
-            db_query(
-                "UPDATE drivers SET last_name = ?, first_name = ?, middle_initial = ?,
-                suffix = ?, date_of_birth = ?, age = ?, zone = ?, barangay = ?, municipality = ?, province = ?,
-                license_type = ? WHERE driver_id = ?",
-                [
-                    $data['last_name'], $data['first_name'], $data['middle_initial'],
-                    $data['suffix'], $dob, $age, $data['zone'], $data['barangay'],
-                    $data['municipality'] ?? 'Baggao', $data['province'] ?? 'Cagayan',
-                    $data['license_type'], $driver_id
-                ]
-            );
-        } else {
-            // Insert new driver
-            db_query(
-                "INSERT INTO drivers (last_name, first_name, middle_initial, suffix,
-                date_of_birth, age, zone, barangay, municipality, province, license_number, license_type)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                [
-                    $data['last_name'], $data['first_name'], $data['middle_initial'],
-                    $data['suffix'], $dob, $age, $data['zone'], $data['barangay'],
-                    $data['municipality'] ?? 'Baggao', $data['province'] ?? 'Cagayan',
-                    $data['license_number'], $data['license_type']
-                ]
-            );
-            $driver_id = $pdo->lastInsertId();
+        // Add DOB to matching if available (more accurate)
+        if ($dob) {
+            $sql .= " AND date_of_birth = ?";
+            $params[] = $dob;
         }
+
+        $sql .= " LIMIT 1";
+        $stmt = db_query($sql, $params);
+        $existing_driver = $stmt->fetch();
     }
-    
-    // Process date of birth and age for citation (if not already set)
-    if (!isset($dob)) {
-        $dob = !empty($data['date_of_birth']) ? $data['date_of_birth'] : null;
-    }
-    if (!isset($age)) {
-        $age = !empty($data['age']) ? (int)$data['age'] : null;
+
+    if ($existing_driver) {
+        // Driver exists - update their information
+        $driver_id = $existing_driver['driver_id'];
+        db_query(
+            "UPDATE drivers SET last_name = ?, first_name = ?, middle_initial = ?,
+            suffix = ?, date_of_birth = ?, age = ?, zone = ?, barangay = ?, municipality = ?, province = ?,
+            license_number = ?, license_type = ? WHERE driver_id = ?",
+            [
+                $data['last_name'], $data['first_name'], $data['middle_initial'],
+                $data['suffix'], $dob, $age, $data['zone'], $data['barangay'],
+                $data['municipality'] ?? 'Baggao', $data['province'] ?? 'Cagayan',
+                $data['license_number'] ?? null, $data['license_type'] ?? null, $driver_id
+            ]
+        );
+    } else {
+        // Driver doesn't exist - create new driver record (even without license!)
+        db_query(
+            "INSERT INTO drivers (last_name, first_name, middle_initial, suffix,
+            date_of_birth, age, zone, barangay, municipality, province, license_number, license_type)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            [
+                $data['last_name'], $data['first_name'], $data['middle_initial'],
+                $data['suffix'], $dob, $age, $data['zone'], $data['barangay'],
+                $data['municipality'] ?? 'Baggao', $data['province'] ?? 'Cagayan',
+                $data['license_number'] ?? null, $data['license_type'] ?? null
+            ]
+        );
+        $driver_id = $pdo->lastInsertId();
     }
 
     // Insert citation

@@ -80,8 +80,18 @@
             </a>
         </li>
         <li>
-            <a href="/vlad/admin/reports.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'reports.php') ? 'active' : ''; ?>" title="Reports">
+            <a href="/vlad/public/reports.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'reports.php') ? 'active' : ''; ?>" title="Reports">
                 <i class="fas fa-chart-bar"></i> <span>Reports</span>
+            </a>
+        </li>
+        <li>
+            <a href="/vlad/admin/driver_duplicates.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'driver_duplicates.php') ? 'active' : ''; ?>" title="Driver Duplicates">
+                <i class="fas fa-user-friends"></i> <span>Driver Duplicates</span>
+            </a>
+        </li>
+        <li>
+            <a href="/vlad/admin/database_diagnostics.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'database_diagnostics.php') ? 'active' : ''; ?>" title="Database Diagnostics">
+                <i class="fas fa-database"></i> <span>Database Diagnostics</span>
             </a>
         </li>
         <?php endif; ?>

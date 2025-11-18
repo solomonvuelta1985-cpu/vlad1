@@ -1,10 +1,22 @@
 <?php
-// Input Sanitization
+// Input Sanitization for Database Storage
+// Note: htmlspecialchars should ONLY be used when displaying data, NOT when storing it
+// Prepared statements (used by db_query) already protect against SQL injection
 function sanitize($data) {
     if (is_array($data)) {
         return array_map('sanitize', $data);
     }
-    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+    // Only trim whitespace - do NOT use htmlspecialchars here
+    // htmlspecialchars should be used when DISPLAYING data in HTML, not when storing it
+    return trim($data);
+}
+
+// HTML Output Sanitization (use this when displaying data in HTML)
+function html_escape($data) {
+    if (is_array($data)) {
+        return array_map('html_escape', $data);
+    }
+    return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 }
 
 // Safe Database Query Execution

@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(dir /s /b /ad c:xampphtdocsvlad 2)",
-      "Bash(nul)"
+      "Bash(nul)",
+      "Bash(if not exist \"c:\\xampp\\htdocs\\vlad\\services\" mkdir \"c:\\xampp\\htdocs\\vlad\\services\")",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []
