@@ -1,0 +1,298 @@
+[17-Nov-2025 07:32:52 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date_of_birth' in 'field list' - Query: INSERT INTO citations (ticket_number, driver_id, last_name, first_name,
+        middle_initial, suffix, date_of_birth, age, zone, barangay, municipality, province, license_number,
+        license_type, plate_mv_engine_chassis_no, vehicle_description,
+        apprehension_datetime, place_of_apprehension, remarks, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+[17-Nov-2025 07:32:52 Europe/Berlin] Citation submission error: Database operation failed | File: C:\xampp\htdocs\vlad\includes\functions.php | Line: 19
+[17-Nov-2025 07:35:30 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'age' in 'field list' - Query: INSERT INTO citations (ticket_number, driver_id, last_name, first_name,
+        middle_initial, suffix, date_of_birth, age, zone, barangay, municipality, province, license_number,
+        license_type, plate_mv_engine_chassis_no, vehicle_description,
+        apprehension_datetime, place_of_apprehension, remarks, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+[17-Nov-2025 07:35:30 Europe/Berlin] Citation submission error: Database operation failed | File: C:\xampp\htdocs\vlad\includes\functions.php | Line: 19
+[17-Nov-2025 07:37:06 Europe/Berlin] Database query error: SQLSTATE[HY000]: General error: 1442 Can't update table 'violations' in stored function/trigger because it is already used by statement which invoked this stored function/trigger - Query: INSERT INTO violations (citation_id, violation_type_id, offense_count)
+            VALUES (?, ?, ?)
+[17-Nov-2025 07:37:06 Europe/Berlin] Citation submission error: Database operation failed | File: C:\xampp\htdocs\vlad\includes\functions.php | Line: 19
+[17-Nov-2025 08:34:46 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:257
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 257
+[17-Nov-2025 08:34:52 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:257
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 257
+[17-Nov-2025 08:34:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:257
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 257
+[17-Nov-2025 08:34:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:257
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 257
+[17-Nov-2025 08:34:56 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:257
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 257
+[17-Nov-2025 08:35:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:257
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 257
+[17-Nov-2025 08:38:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 266
+[17-Nov-2025 08:38:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 266
+[17-Nov-2025 08:38:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 266
+[17-Nov-2025 08:38:30 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function show_flash() in C:\xampp\htdocs\vlad\public\index.php:266
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\index.php on line 266
+[17-Nov-2025 11:50:10 Europe/Berlin] Citation 2 status changed from 'pending' to 'contested' by admin
+[17-Nov-2025 11:50:25 Europe/Berlin] Citation 2 status changed from 'contested' to 'pending' by admin
+[17-Nov-2025 12:05:29 Europe/Berlin] Citation 2 status changed from 'pending' to 'contested' by admin
+[17-Nov-2025 12:10:49 Europe/Berlin] Citation 2 status changed from 'contested' to 'pending' by admin
+[17-Nov-2025 12:20:25 Europe/Berlin] Citation 2 status changed from 'pending' to 'void' by admin
+[17-Nov-2025 12:20:36 Europe/Berlin] Citation 2 status changed from 'void' to 'pending' by admin
+[17-Nov-2025 12:38:24 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:38:24 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:38:27 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:38:27 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:38:28 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:38:28 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:38:44 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:38:44 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:39:51 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:39:51 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:39:51 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:39:51 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:39:52 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:39:52 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:39:52 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:39:52 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:39:53 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:39:53 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:39:53 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fine_amount' in 'field list' - Query: SELECT violation_type_id, violation_type, fine_amount FROM violation_types ORDER BY violation_type
+[17-Nov-2025 12:39:53 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(18): db_query('SELECT violatio...')
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:40:07 Europe/Berlin] PHP Warning:  Undefined array key "full_name" in C:\xampp\htdocs\vlad\public\search.php on line 400
+[17-Nov-2025 12:40:34 Europe/Berlin] Database query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'c.apprehending_officer_id' in 'where clause' - Query: SELECT COUNT(DISTINCT c.citation_id) as total FROM citations c WHERE c.status = ? AND c.apprehending_officer_id = ?
+[17-Nov-2025 12:40:34 Europe/Berlin] PHP Fatal error:  Uncaught Exception: Database operation failed in C:\xampp\htdocs\vlad\includes\functions.php:19
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\search.php(132): db_query('SELECT COUNT(DI...', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\functions.php on line 19
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "full_name" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "date_of_apprehension" in C:\xampp\htdocs\vlad\public\search.php on line 485
+[17-Nov-2025 12:41:19 Europe/Berlin] PHP Warning:  Undefined array key "officer_name" in C:\xampp\htdocs\vlad\public\search.php on line 514
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:04 Europe/Berlin] PHP Warning:  Undefined array key "full_name" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "full_name" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "date_of_apprehension" in C:\xampp\htdocs\vlad\public\search.php on line 485
+[17-Nov-2025 12:42:08 Europe/Berlin] PHP Warning:  Undefined array key "officer_name" in C:\xampp\htdocs\vlad\public\search.php on line 514
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:28 Europe/Berlin] PHP Warning:  Undefined array key "full_name" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "fine_amount" in C:\xampp\htdocs\vlad\public\search.php on line 376
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "full_name" in C:\xampp\htdocs\vlad\public\search.php on line 388
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "date_of_apprehension" in C:\xampp\htdocs\vlad\public\search.php on line 485
+[17-Nov-2025 12:42:39 Europe/Berlin] PHP Warning:  Undefined array key "officer_name" in C:\xampp\htdocs\vlad\public\search.php on line 514
+[18-Nov-2025 01:21:05 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
+[18-Nov-2025 01:21:06 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
+[18-Nov-2025 01:21:09 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
