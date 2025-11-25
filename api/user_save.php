@@ -87,13 +87,7 @@ try {
         }
 
         // Use existing create_user function
-        $new_user_id = create_user([
-            'username' => $username,
-            'password' => $password,
-            'full_name' => $full_name,
-            'email' => $email,
-            'role' => $role
-        ]);
+        $new_user_id = create_user($username, $password, $full_name, $email, $role);
 
         if ($new_user_id) {
             echo json_encode([

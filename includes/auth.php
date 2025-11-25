@@ -285,37 +285,43 @@ if (!function_exists('get_current_user')) {
 
 /**
  * Create a new user account
- * @param array $userData User information
+ * @param string $username Username
+ * @param string $password Plain text password (will be hashed)
+ * @param string $full_name Full name
+ * @param string $email Email address
+ * @param string $role User role (default: 'user')
  * @return int|false User ID on success, false on failure
  */
-function create_user($userData) {
+function create_user($username, $password, $full_name, $email, $role = 'user') {
     try {
+        $pdo = getPDO();
+
         // Check if username already exists
-        $existing = db_query(
-            "SELECT user_id FROM users WHERE username = ?",
-            [$userData['username']]
-        )->fetch();
+        $stmt = $pdo->prepare("SELECT user_id FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $existing = $stmt->fetch();
 
         if ($existing) {
             return false;
         }
 
         // Hash password
-        $passwordHash = password_hash($userData['password'], PASSWORD_DEFAULT);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = db_query(
+        $stmt = $pdo->prepare(
             "INSERT INTO users (username, password_hash, full_name, email, role, status, created_at)
-             VALUES (?, ?, ?, ?, ?, 'active', NOW())",
-            [
-                $userData['username'],
-                $passwordHash,
-                $userData['full_name'],
-                $userData['email'],
-                $userData['role'] ?? 'user'
-            ]
+             VALUES (?, ?, ?, ?, ?, 'active', NOW())"
         );
 
-        return $stmt->rowCount() > 0 ? getPDO()->lastInsertId() : false;
+        $stmt->execute([
+            $username,
+            $passwordHash,
+            $full_name,
+            $email,
+            $role
+        ]);
+
+        return $stmt->rowCount() > 0 ? $pdo->lastInsertId() : false;
     } catch (Exception $e) {
         error_log("User creation error: " . $e->getMessage());
         return false;

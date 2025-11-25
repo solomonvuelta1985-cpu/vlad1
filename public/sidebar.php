@@ -58,8 +58,13 @@
         <li class="sidebar-divider"></li>
         <li class="sidebar-heading">Payments</li>
         <li>
-            <a href="/vlad/public/payments.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'payments.php') ? 'active' : ''; ?>" title="Payment Management">
-                <i class="fas fa-money-bill-wave"></i> <span>Payment Management</span>
+            <a href="/vlad/public/process_payment.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'process_payment.php') ? 'active' : ''; ?>" title="Process Payments">
+                <i class="fas fa-cash-register"></i> <span>Process Payments</span>
+            </a>
+        </li>
+        <li>
+            <a href="/vlad/public/payments.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'payments.php') ? 'active' : ''; ?>" title="Payment History">
+                <i class="fas fa-history"></i> <span>Payment History</span>
             </a>
         </li>
         <?php endif; ?>
