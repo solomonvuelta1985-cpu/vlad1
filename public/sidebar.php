@@ -35,11 +35,13 @@
         <!-- Citations Section -->
         <li class="sidebar-divider"></li>
         <li class="sidebar-heading">Citations</li>
+        <?php if (function_exists('can_create_citation') && can_create_citation()): ?>
         <li>
             <a href="/vlad/public/index2.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'index2.php') ? 'active' : ''; ?>" title="New Citation">
                 <i class="fas fa-plus-circle"></i> <span>New Citation</span>
             </a>
         </li>
+        <?php endif; ?>
         <li>
             <a href="/vlad/public/citations.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'citations.php') ? 'active' : ''; ?>" title="View All">
                 <i class="fas fa-list-alt"></i> <span>View All</span>
@@ -51,14 +53,27 @@
             </a>
         </li>
 
+        <!-- Payments Section -->
+        <?php if (function_exists('can_process_payment') && can_process_payment()): ?>
+        <li class="sidebar-divider"></li>
+        <li class="sidebar-heading">Payments</li>
+        <li>
+            <a href="/vlad/public/payments.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'payments.php') ? 'active' : ''; ?>" title="Payment Management">
+                <i class="fas fa-money-bill-wave"></i> <span>Payment Management</span>
+            </a>
+        </li>
+        <?php endif; ?>
+
         <!-- Management Section -->
         <li class="sidebar-divider"></li>
         <li class="sidebar-heading">Management</li>
+        <?php if (function_exists('has_role') && has_role(['admin', 'enforcer'])): ?>
         <li>
             <a href="/vlad/public/officers.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'officers.php') ? 'active' : ''; ?>" title="Officers">
                 <i class="fas fa-user-shield"></i> <span>Officers</span>
             </a>
         </li>
+        <?php endif; ?>
 
         <?php if (function_exists('is_admin') && is_admin()): ?>
         <!-- Admin Section -->
@@ -103,6 +118,10 @@
             <small>
                 <i class="fas fa-user"></i>
                 <span><?php echo htmlspecialchars($_SESSION['full_name'] ?? $_SESSION['username'] ?? 'User'); ?></span>
+                <br>
+                <span class="badge bg-secondary" style="font-size: 10px; margin-top: 4px;">
+                    <?php echo strtoupper($_SESSION['user_role'] ?? 'USER'); ?>
+                </span>
             </small>
         </div>
         <a href="/vlad/public/logout.php" class="btn btn-sm btn-outline-light w-100 mt-2" title="Logout">

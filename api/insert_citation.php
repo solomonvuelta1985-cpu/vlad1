@@ -8,6 +8,16 @@ require_once '../includes/auth.php';
 header('Content-Type: application/json');
 header('X-Content-Type-Options: nosniff');
 
+// Require enforcer or admin privileges to create citations
+if (!can_create_citation()) {
+    http_response_code(403);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Access denied. Only enforcers can create citations.'
+    ]);
+    exit;
+}
+
 // Rate Limiting
 if (!check_rate_limit('citation_submission', 10, 300)) {
     http_response_code(429);

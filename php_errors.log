@@ -40,3 +40,9 @@
 [25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 34
 [25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
 [25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:24:18 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[25-Nov-2025 02:24:18 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[25-Nov-2025 02:24:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_print.php on line 29
+[25-Nov-2025 02:29:30 Europe/Berlin] Citation 10 status changed from 'pending' to 'paid' by admin
+[25-Nov-2025 03:09:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[25-Nov-2025 03:09:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30

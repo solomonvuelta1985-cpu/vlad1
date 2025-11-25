@@ -14,6 +14,16 @@ if (!is_logged_in()) {
     exit;
 }
 
+// Require enforcer or admin privileges to change status
+if (!can_change_status()) {
+    http_response_code(403);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Access denied. Only enforcers and admins can change citation status.'
+    ]);
+    exit;
+}
+
 // Rate Limiting
 if (!check_rate_limit('citation_status', 30, 300)) {
     http_response_code(429);

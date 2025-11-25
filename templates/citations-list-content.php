@@ -14,6 +14,11 @@
  * - $total_records: Total records
  * - $offset: Offset for pagination
  */
+
+// Check user permissions
+$can_edit = function_exists('can_edit_citation') && can_edit_citation();
+$can_change_status = function_exists('can_change_status') && can_change_status();
+$can_pay = function_exists('can_process_payment') && can_process_payment();
 ?>
 <div class="main-card">
     <!-- Page Header -->
@@ -142,6 +147,7 @@
                                 <button type="button" class="btn btn-info btn-sm" onclick="viewCitation(<?php echo $citation['citation_id']; ?>)" title="View">
                                     <i class="fas fa-eye"></i>
                                 </button>
+                                <?php if ($can_change_status): ?>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" title="Update Status">
                                         <i class="fas fa-tasks"></i>
@@ -155,9 +161,17 @@
                                         <li><a class="dropdown-item" href="#" onclick="quickStatusUpdate(<?php echo $citation['citation_id']; ?>, 'pending')"><i class="fas fa-clock text-warning"></i> Reset to Pending</a></li>
                                     </ul>
                                 </div>
+                                <?php endif; ?>
+                                <?php if ($can_edit): ?>
                                 <button type="button" class="btn btn-warning btn-sm" onclick="editCitation(<?php echo $citation['citation_id']; ?>)" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </button>
+                                <?php endif; ?>
+                                <?php if ($can_pay && $citation['status'] !== 'paid'): ?>
+                                <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='/vlad/public/payments.php?citation_id=<?php echo $citation['citation_id']; ?>'" title="Process Payment">
+                                    <i class="fas fa-money-bill"></i>
+                                </button>
+                                <?php endif; ?>
                                 <?php if (is_admin()): ?>
                                 <button type="button" class="btn btn-danger btn-sm" onclick="deleteCitation(<?php echo $citation['citation_id']; ?>)" title="Delete">
                                     <i class="fas fa-trash"></i>

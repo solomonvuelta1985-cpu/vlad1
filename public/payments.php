@@ -23,6 +23,13 @@ require_once ROOT_PATH . '/services/PaymentService.php';
 // Require authentication
 require_login();
 
+// Require cashier or admin privileges
+if (!can_process_payment()) {
+    set_flash('Access denied. Only cashiers can access payment management.', 'danger');
+    header('Location: /vlad/public/index.php');
+    exit;
+}
+
 // Page title
 $pageTitle = 'Payment Management';
 
@@ -50,7 +57,7 @@ $monthStats = $paymentService->getPaymentStatistics([
 
 // Get all cashiers for filter
 $pdo = getPDO();
-$sql = "SELECT DISTINCT user_id, full_name FROM users WHERE role IN ('admin', 'enforcer') ORDER BY full_name";
+$sql = "SELECT DISTINCT user_id, full_name FROM users WHERE role IN ('admin', 'cashier') ORDER BY full_name";
 $stmt = $pdo->query($sql);
 $cashiers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

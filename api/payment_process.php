@@ -19,6 +19,16 @@ header('Content-Type: application/json');
 // Require authentication
 require_login();
 
+// Require cashier or admin privileges to process payments
+if (!can_process_payment()) {
+    http_response_code(403);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Access denied. Only cashiers can process payments.'
+    ]);
+    exit;
+}
+
 // Only POST requests allowed
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);

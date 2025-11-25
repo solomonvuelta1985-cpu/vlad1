@@ -16,6 +16,13 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     exit;
 }
 
+// Check if user has permission to edit citations
+if (!can_edit_citation()) {
+    set_flash('Access denied. You do not have permission to edit citations.', 'danger');
+    header('Location: citations.php');
+    exit;
+}
+
 $citation_id = (int)$_GET['id'];
 
 try {
@@ -34,6 +41,13 @@ try {
 
     if (!$citation) {
         header('Location: citations.php?error=not_found');
+        exit;
+    }
+
+    // For enforcers, check if they created this citation
+    if (is_enforcer() && $citation['created_by'] != $_SESSION['user_id']) {
+        set_flash('Access denied. You can only edit citations you created.', 'danger');
+        header('Location: citations.php');
         exit;
     }
 

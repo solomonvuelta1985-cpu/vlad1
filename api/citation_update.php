@@ -60,6 +60,16 @@ try {
         exit;
     }
 
+    // Check permission to edit this citation
+    if (!can_edit_citation($citation_id, $existing_citation['created_by'])) {
+        http_response_code(403);
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Access denied. You can only edit citations you created.'
+        ]);
+        exit;
+    }
+
     // Input Validation
     $required_fields = [
         'ticket_number', 'last_name', 'first_name', 'barangay',

@@ -54,6 +54,131 @@ function require_admin() {
 }
 
 /**
+ * Check if current user is an enforcer
+ * @return bool
+ */
+function is_enforcer() {
+    return is_logged_in() && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'enforcer';
+}
+
+/**
+ * Check if current user is a cashier
+ * @return bool
+ */
+function is_cashier() {
+    return is_logged_in() && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'cashier';
+}
+
+/**
+ * Check if user has any of the specified roles
+ * @param array|string $roles Array of role names or single role name
+ * @return bool
+ */
+function has_role($roles) {
+    if (!is_logged_in()) {
+        return false;
+    }
+
+    if (!is_array($roles)) {
+        $roles = [$roles];
+    }
+
+    return in_array($_SESSION['user_role'], $roles);
+}
+
+/**
+ * Require enforcer or admin privileges
+ * Redirects if user is not an enforcer or admin
+ */
+function require_enforcer() {
+    require_login();
+    if (!is_enforcer() && !is_admin()) {
+        set_flash('Access denied. Enforcer privileges required.', 'danger');
+        header('Location: /vlad/public/index.php');
+        exit;
+    }
+}
+
+/**
+ * Require cashier or admin privileges
+ * Redirects if user is not a cashier or admin
+ */
+function require_cashier() {
+    require_login();
+    if (!is_cashier() && !is_admin()) {
+        set_flash('Access denied. Cashier privileges required.', 'danger');
+        header('Location: /vlad/public/index.php');
+        exit;
+    }
+}
+
+/**
+ * Check if user can create citations
+ * @return bool
+ */
+function can_create_citation() {
+    return is_admin() || is_enforcer();
+}
+
+/**
+ * Check if user can edit citation
+ * @param int|null $citation_id Citation ID (optional)
+ * @param int|null $creator_id User ID who created the citation (optional)
+ * @return bool
+ */
+function can_edit_citation($citation_id = null, $creator_id = null) {
+    // Admins can edit anything
+    if (is_admin()) {
+        return true;
+    }
+
+    // Enforcers can edit their own citations
+    if (is_enforcer()) {
+        // If creator_id provided, check ownership
+        if ($creator_id !== null) {
+            return $creator_id == $_SESSION['user_id'];
+        }
+        // If no creator provided, allow (will check in API)
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Check if user can change citation status
+ * @return bool
+ */
+function can_change_status() {
+    return is_admin() || is_enforcer();
+}
+
+/**
+ * Check if user can process payments
+ * @return bool
+ */
+function can_process_payment() {
+    return is_admin() || is_cashier();
+}
+
+/**
+ * Check if user can refund/cancel payments
+ * @return bool
+ */
+function can_refund_payment() {
+    return is_admin() || is_cashier();
+}
+
+/**
+ * Check if user can view all citations
+ * @return bool
+ */
+function can_view_all_citations() {
+    // All roles except 'user' can view all citations
+    return is_admin() || is_enforcer() || is_cashier();
+}
+
+/**
  * Authenticate user with username and password
  * @param string $username
  * @param string $password
@@ -215,6 +340,187 @@ function update_password($userId, $newPassword) {
         error_log("Password update error: " . $e->getMessage());
         return false;
     }
+}
+
+/**
+ * Get all users with optional search/filter
+ *
+ * @param string|null $search Search term for username/name/email
+ * @param string|null $role Filter by role
+ * @param string|null $status Filter by status
+ * @return array List of users
+ */
+function get_all_users($search = null, $role = null, $status = null) {
+    $pdo = getPDO();
+
+    $sql = "SELECT user_id, username, full_name, email, role, status,
+                   last_login, created_at
+            FROM users
+            WHERE 1=1";
+
+    $params = [];
+
+    if ($search) {
+        $sql .= " AND (username LIKE ? OR full_name LIKE ? OR email LIKE ?)";
+        $searchTerm = "%{$search}%";
+        $params[] = $searchTerm;
+        $params[] = $searchTerm;
+        $params[] = $searchTerm;
+    }
+
+    if ($role) {
+        $sql .= " AND role = ?";
+        $params[] = $role;
+    }
+
+    if ($status) {
+        $sql .= " AND status = ?";
+        $params[] = $status;
+    }
+
+    $sql .= " ORDER BY created_at DESC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Get a single user by ID
+ *
+ * @param int $user_id User ID
+ * @return array|false User data or false if not found
+ */
+function get_user_by_id($user_id) {
+    $pdo = getPDO();
+
+    $stmt = $pdo->prepare("SELECT user_id, username, full_name, email, role,
+                                  status, last_login, created_at
+                           FROM users
+                           WHERE user_id = ?");
+    $stmt->execute([$user_id]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Update user information
+ *
+ * @param int $user_id User ID
+ * @param array $data User data (full_name, email, role, status)
+ * @return bool Success status
+ */
+function update_user($user_id, $data) {
+    $pdo = getPDO();
+
+    // Validate email if provided
+    if (isset($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        throw new Exception('Invalid email format');
+    }
+
+    // Build update query dynamically
+    $fields = [];
+    $params = [];
+
+    if (isset($data['full_name'])) {
+        $fields[] = "full_name = ?";
+        $params[] = trim($data['full_name']);
+    }
+
+    if (isset($data['email'])) {
+        $fields[] = "email = ?";
+        $params[] = trim($data['email']);
+    }
+
+    if (isset($data['role']) && in_array($data['role'], ['user', 'admin', 'enforcer', 'cashier'])) {
+        $fields[] = "role = ?";
+        $params[] = $data['role'];
+    }
+
+    if (isset($data['status']) && in_array($data['status'], ['active', 'inactive', 'suspended'])) {
+        $fields[] = "status = ?";
+        $params[] = $data['status'];
+    }
+
+    if (empty($fields)) {
+        return false;
+    }
+
+    $params[] = $user_id;
+    $sql = "UPDATE users SET " . implode(', ', $fields) . " WHERE user_id = ?";
+
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute($params);
+}
+
+/**
+ * Delete a user
+ *
+ * @param int $user_id User ID to delete
+ * @return bool Success status
+ */
+function delete_user($user_id) {
+    $pdo = getPDO();
+
+    // Prevent deleting yourself
+    if ($user_id == $_SESSION['user_id']) {
+        throw new Exception('You cannot delete your own account');
+    }
+
+    $stmt = $pdo->prepare("DELETE FROM users WHERE user_id = ?");
+    return $stmt->execute([$user_id]);
+}
+
+/**
+ * Reset user password
+ *
+ * @param int $user_id User ID
+ * @param string $new_password New password (plain text, will be hashed)
+ * @return bool Success status
+ */
+function reset_user_password($user_id, $new_password) {
+    $pdo = getPDO();
+
+    // Validate password strength
+    if (strlen($new_password) < 8) {
+        throw new Exception('Password must be at least 8 characters long');
+    }
+
+    if (!preg_match('/[A-Za-z]/', $new_password) || !preg_match('/[0-9]/', $new_password)) {
+        throw new Exception('Password must contain both letters and numbers');
+    }
+
+    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+    $stmt = $pdo->prepare("UPDATE users SET password_hash = ? WHERE user_id = ?");
+    return $stmt->execute([$password_hash, $user_id]);
+}
+
+/**
+ * Update user status
+ *
+ * @param int $user_id User ID
+ * @param string $status New status (active/inactive/suspended)
+ * @return bool Success status
+ */
+function update_user_status($user_id, $status) {
+    if (!in_array($status, ['active', 'inactive', 'suspended'])) {
+        throw new Exception('Invalid status');
+    }
+
+    return update_user($user_id, ['status' => $status]);
+}
+
+/**
+ * Validate username
+ *
+ * @param string $username Username to validate
+ * @return bool Validation result
+ */
+function validate_username($username) {
+    // 3-20 characters, alphanumeric, underscore, dash
+    return preg_match('/^[a-zA-Z0-9_-]{3,20}$/', $username);
 }
 
 /**
