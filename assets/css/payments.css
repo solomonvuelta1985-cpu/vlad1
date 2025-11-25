@@ -1,0 +1,137 @@
+/**
+ * Payment Management Page Styles
+ */
+
+/* Statistics Cards */
+.stat-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-today {
+    border-left: 4px solid #0d6efd;
+}
+
+.stat-card-week {
+    border-left: 4px solid #198754;
+}
+
+.stat-card-month {
+    border-left: 4px solid #ffc107;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+#paymentsTable {
+    font-size: 0.9rem;
+}
+
+#paymentsTable thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#paymentsTable tbody tr {
+    transition: background-color 0.2s;
+}
+
+#paymentsTable tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Responsive Table */
+.table-responsive {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Action Buttons */
+.btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Loading Spinner */
+#loadingSpinner {
+    min-height: 200px;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+}
+
+.page-link {
+    color: #0d6efd;
+    border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Filter Card */
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Print Styles */
+@media print {
+    .btn-toolbar,
+    .card-header,
+    #filterForm,
+    .pagination,
+    .btn-group {
+        display: none !important;
+    }
+
+    .stat-card {
+        page-break-inside: avoid;
+    }
+
+    #paymentsTable {
+        font-size: 10pt;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .stat-card {
+        margin-bottom: 15px;
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+    }
+
+    #paymentsTable {
+        font-size: 0.8rem;
+    }
+
+    .btn-group-sm .btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+}

@@ -1,10 +1,42 @@
-[18-Nov-2025 07:45:13 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
-[18-Nov-2025 07:45:13 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
-[18-Nov-2025 07:45:13 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
-[18-Nov-2025 07:45:13 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
-[18-Nov-2025 08:23:41 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
-[18-Nov-2025 08:23:41 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
-[18-Nov-2025 08:23:41 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
-[18-Nov-2025 08:23:41 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
-[18-Nov-2025 08:30:33 Europe/Berlin] Citation 10 status changed from 'pending' to 'void' by admin
-[18-Nov-2025 08:30:52 Europe/Berlin] Citation 10 status changed from 'void' to 'dismissed' by admin
+[25-Nov-2025 02:03:34 Europe/Berlin] Database query error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'license_number' - Query: INSERT INTO drivers (last_name, first_name, middle_initial, suffix,
+            date_of_birth, age, zone, barangay, municipality, province, license_number, license_type)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[25-Nov-2025 02:03:34 Europe/Berlin] Citation submission error: Database operation failed | File: C:\xampp\htdocs\vlad\includes\functions.php | Line: 31
+[25-Nov-2025 02:09:49 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\financial-report.php on line 126
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[25-Nov-2025 02:09:57 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[25-Nov-2025 02:11:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:49 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:49 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:49 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:49 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:49 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:49 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 34
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 34
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 34
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 34
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 34
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 37
+[25-Nov-2025 02:11:56 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40

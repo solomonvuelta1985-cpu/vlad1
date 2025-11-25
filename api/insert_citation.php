@@ -75,6 +75,15 @@ try {
     // Sanitize all inputs
     $data = sanitize($_POST);
 
+    // Convert empty strings to NULL for optional fields (prevents unique constraint violations)
+    $nullable_fields = ['middle_initial', 'suffix', 'zone', 'license_number', 'license_type',
+                        'date_of_birth', 'age', 'vehicle_description', 'remarks'];
+    foreach ($nullable_fields as $field) {
+        if (isset($data[$field]) && $data[$field] === '') {
+            $data[$field] = null;
+        }
+    }
+
     // Begin transaction for data consistency
     $pdo = getPDO();
     if (!$pdo) {
