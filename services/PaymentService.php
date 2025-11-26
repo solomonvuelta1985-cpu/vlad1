@@ -140,6 +140,42 @@ class PaymentService {
         return $this->processor->changeCitationStatus($citationId, $newStatus, $userId, $reason);
     }
 
+    /**
+     * Finalize payment after successful print confirmation
+     *
+     * @param int $paymentId Payment ID
+     * @param int $userId User ID confirming the print
+     * @return array Result
+     */
+    public function finalizePayment($paymentId, $userId) {
+        return $this->processor->finalizePayment($paymentId, $userId);
+    }
+
+    /**
+     * Update OR number for a pending_print payment
+     *
+     * @param int $paymentId Payment ID
+     * @param string $newOrNumber New OR number
+     * @param int $userId User ID making the change
+     * @param string $reason Reason for OR change
+     * @return array Result
+     */
+    public function updateOrNumber($paymentId, $newOrNumber, $userId, $reason) {
+        return $this->processor->updateOrNumber($paymentId, $newOrNumber, $userId, $reason);
+    }
+
+    /**
+     * Void a pending_print payment
+     *
+     * @param int $paymentId Payment ID
+     * @param int $userId User ID voiding the payment
+     * @param string $reason Reason for voiding
+     * @return array Result
+     */
+    public function voidPayment($paymentId, $userId, $reason) {
+        return $this->processor->voidPayment($paymentId, $userId, $reason);
+    }
+
     // ============================================
     // ADDITIONAL CONVENIENCE METHODS
     // ============================================

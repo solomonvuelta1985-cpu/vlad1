@@ -109,7 +109,34 @@ class PaymentValidator {
     }
 
     /**
-     * Validate receipt/OR number uniqueness
+     * Validate receipt/OR number format
+     *
+     * @param string $receiptNumber Receipt/OR number to validate
+     * @return array Validation result with 'valid' and 'message'
+     */
+    public function validateReceiptNumberFormat($receiptNumber) {
+        // Trim and convert to uppercase
+        $receiptNumber = strtoupper(trim($receiptNumber));
+
+        // OR Number format: 2-4 uppercase letters followed by 6-10 digits
+        // Examples: CGVM15320501, OR123456, ABC1234567890
+        $pattern = '/^[A-Z]{2,4}[0-9]{6,10}$/';
+
+        if (!preg_match($pattern, $receiptNumber)) {
+            return [
+                'valid' => false,
+                'message' => 'Invalid OR number format. Expected format: 2-4 letters followed by 6-10 digits (e.g., CGVM15320501)'
+            ];
+        }
+
+        return [
+            'valid' => true,
+            'message' => 'OR number format is valid'
+        ];
+    }
+
+    /**
+     * Validate receipt/OR number uniqueness and format
      *
      * @param string $receiptNumber Receipt/OR number to validate
      * @return array Validation result with 'valid' and 'message'
@@ -117,7 +144,13 @@ class PaymentValidator {
     public function validateReceiptNumber($receiptNumber) {
         try {
             // Trim and sanitize the receipt number
-            $receiptNumber = trim($receiptNumber);
+            $receiptNumber = strtoupper(trim($receiptNumber));
+
+            // First, validate the format
+            $formatValidation = $this->validateReceiptNumberFormat($receiptNumber);
+            if (!$formatValidation['valid']) {
+                return $formatValidation;
+            }
 
             // Check if OR number already exists in payments table
             $sql = "SELECT payment_id, receipt_number, amount_paid, payment_date

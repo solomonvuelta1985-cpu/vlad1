@@ -5,7 +5,7 @@ php_value error_log "c:/xampp/htdocs/vlad/php_errors.log"
 php_value error_reporting -1
 
 # Security Headers
-Header set X-Frame-Options "DENY"
+Header set X-Frame-Options "SAMEORIGIN"
 Header set X-Content-Type-Options "nosniff"
 Header set X-XSS-Protection "1; mode=block"
 

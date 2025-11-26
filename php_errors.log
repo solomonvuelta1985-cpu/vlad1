@@ -242,3 +242,107 @@ Stack trace:
 [26-Nov-2025 03:35:09 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
 [26-Nov-2025 03:52:36 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_print.php on line 29
 [26-Nov-2025 04:53:40 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[26-Nov-2025 05:51:53 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 05:51:53 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 05:51:53 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 05:52:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 50
+[26-Nov-2025 05:52:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 51
+[26-Nov-2025 05:52:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Cannot access private property PaymentService::$processor in C:\xampp\htdocs\vlad\api\payments\update_or_number.php:70
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 70
+[26-Nov-2025 05:57:30 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_print.php on line 29
+[26-Nov-2025 06:06:19 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 06:06:19 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 06:06:19 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 06:06:35 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\refund_payment.php on line 49
+[26-Nov-2025 06:09:22 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 06:09:22 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 06:09:22 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 06:09:38 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 50
+[26-Nov-2025 06:09:38 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 51
+[26-Nov-2025 06:11:31 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\void_payment.php on line 50
+[26-Nov-2025 06:13:04 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 06:13:04 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 06:13:04 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 06:20:45 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 06:20:45 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 06:20:45 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 06:21:43 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 06:21:43 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 06:21:43 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 06:39:04 Europe/Berlin] Citation delete error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'traffic_system.citation_status_history' doesn't exist
+[26-Nov-2025 06:41:07 Europe/Berlin] Citation delete error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'traffic_system.citation_status_history' doesn't exist
+[26-Nov-2025 06:42:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 06:42:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 06:42:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 06:42:17 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 50
+[26-Nov-2025 06:42:17 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\update_or_number.php on line 51
+[26-Nov-2025 07:57:44 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 07:57:44 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 07:57:44 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 07:58:11 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it
+[26-Nov-2025 07:58:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\vlad\public\pending_print_payments.php:54
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\public\pending_print_payments.php on line 54
+[26-Nov-2025 08:15:09 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 08:15:09 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 08:15:09 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 08:21:07 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 08:21:07 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 08:21:07 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 08:26:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\void_payment.php on line 50
+[26-Nov-2025 08:26:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 08:26:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 08:26:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 08:27:06 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 08:27:06 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 08:27:06 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 08:28:00 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payments\void_payment.php on line 50
+[26-Nov-2025 09:11:32 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
+[26-Nov-2025 09:11:32 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
+[26-Nov-2025 09:25:58 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:25:58 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:25:58 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:26:54 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:26:54 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:26:54 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:31:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:31:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:31:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:32:54 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function set_flash() in C:\xampp\htdocs\vlad\includes\auth.php:21
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\receipt.php(13): require_login()
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\auth.php on line 21
+[26-Nov-2025 09:34:28 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:34:28 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:34:28 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:37:55 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:37:55 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:37:55 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:37:59 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:37:59 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:37:59 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:38:39 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:38:39 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:38:39 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 09:39:57 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function set_flash() in C:\xampp\htdocs\vlad\includes\auth.php:21
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\receipt.php(13): require_login()
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\auth.php on line 21
+[26-Nov-2025 09:40:03 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function set_flash() in C:\xampp\htdocs\vlad\includes\auth.php:21
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\receipt.php(13): require_login()
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\auth.php on line 21
+[26-Nov-2025 09:40:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function set_flash() in C:\xampp\htdocs\vlad\includes\auth.php:21
+Stack trace:
+#0 C:\xampp\htdocs\vlad\public\receipt.php(13): require_login()
+#1 {main}
+  thrown in C:\xampp\htdocs\vlad\includes\auth.php on line 21
+[26-Nov-2025 09:42:31 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 09:42:31 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 09:42:31 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91

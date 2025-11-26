@@ -1,7 +1,7 @@
 <?php
 /**
- * Migration Runner - Add Cashier Role
- * Run once to add cashier role to database
+ * Migration Runner - Add 'pending_print' Payment Status
+ * Run once to add pending_print status to payments table
  */
 
 require_once 'includes/config.php';
@@ -9,33 +9,34 @@ require_once 'includes/config.php';
 try {
     $pdo = getPDO();
 
-    echo "Running migration: Add 'cashier' role to users table\n";
-    echo "==================================================\n\n";
+    echo "Running migration: Add 'pending_print' status to payments table\n";
+    echo "================================================================\n\n";
 
-    // Add cashier to role enum
-    $sql = "ALTER TABLE users
-            MODIFY COLUMN role ENUM('user', 'admin', 'enforcer', 'cashier')
-            NOT NULL DEFAULT 'user'
-            COMMENT 'User role: user=read-only, enforcer=field officer, cashier=payment processor, admin=full access'";
+    // Add pending_print and voided to payment status enum
+    $sql = "ALTER TABLE payments
+            MODIFY COLUMN status ENUM('completed', 'pending', 'pending_print', 'failed', 'refunded', 'cancelled', 'voided')
+            DEFAULT 'completed'
+            COMMENT 'Payment status'";
 
     $pdo->exec($sql);
-    echo "✓ Cashier role added to enum successfully\n\n";
+    echo "✓ Payment status enum updated successfully\n\n";
 
     // Verify the change
-    $stmt = $pdo->query("SELECT COLUMN_TYPE
-                         FROM INFORMATION_SCHEMA.COLUMNS
-                         WHERE TABLE_SCHEMA = 'traffic_system'
-                           AND TABLE_NAME = 'users'
-                           AND COLUMN_NAME = 'role'");
-
+    $stmt = $pdo->query("SHOW COLUMNS FROM payments LIKE 'status'");
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo "Current role enum values:\n";
-    echo $result['COLUMN_TYPE'] . "\n\n";
+
+    echo "Current payment status enum values:\n";
+    echo $result['Type'] . "\n\n";
 
     echo "✓ Migration completed successfully!\n";
-    echo "\nYou can now create cashier users with:\n";
-    echo "INSERT INTO users (username, password_hash, full_name, email, role)\n";
-    echo "VALUES ('cashier1', '[hash]', 'Cashier Name', 'cashier@example.com', 'cashier');\n";
+    echo "\nStatus values explanation:\n";
+    echo "- completed     : Payment finalized, receipt printed successfully\n";
+    echo "- pending       : Payment not yet processed\n";
+    echo "- pending_print : Payment recorded, waiting for print confirmation\n";
+    echo "- failed        : Payment processing failed\n";
+    echo "- refunded      : Payment was refunded\n";
+    echo "- cancelled     : Payment was cancelled\n";
+    echo "- voided        : Payment voided due to printer issues or errors\n";
 
 } catch (PDOException $e) {
     echo "✗ Migration failed: " . $e->getMessage() . "\n";

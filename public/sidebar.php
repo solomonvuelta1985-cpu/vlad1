@@ -67,6 +67,11 @@
                 <i class="fas fa-history"></i> <span>Payment History</span>
             </a>
         </li>
+        <li>
+            <a href="/vlad/public/pending_print_payments.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'pending_print_payments.php') ? 'active' : ''; ?>" title="Pending Print Payments">
+                <i class="fas fa-clock"></i> <span>Pending Print</span>
+            </a>
+        </li>
         <?php endif; ?>
         <?php if (function_exists('is_admin') && is_admin()): ?>
         <li>

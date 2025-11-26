@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2025 at 09:31 AM
+-- Generation Time: Nov 26, 2025 at 09:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,6 +63,19 @@ CREATE TABLE `audit_log` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `audit_log`
+--
+
+INSERT INTO `audit_log` (`audit_id`, `user_id`, `action`, `table_name`, `record_id`, `old_values`, `new_values`, `ip_address`, `user_agent`, `created_at`) VALUES
+(14, 1, 'status_change', 'citations', 21, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: 557487897\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 13:42:28'),
+(15, 1, 'status_change', 'citations', 22, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: 84245765\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 15:14:22'),
+(16, 1, 'status_change', 'citations', 23, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: 53565656526\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 15:15:27'),
+(17, 1, 'voided', 'payments', 16, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 15:26:08'),
+(18, 1, 'voided', 'payments', 17, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 15:28:00'),
+(19, 1, 'status_change', 'citations', 26, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: HJHU6878788987\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 16:31:20'),
+(20, 1, 'status_change', 'citations', 27, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: HJHU6878788988\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 16:33:43');
+
 -- --------------------------------------------------------
 
 --
@@ -104,10 +117,15 @@ CREATE TABLE `citations` (
 --
 
 INSERT INTO `citations` (`citation_id`, `ticket_number`, `driver_id`, `last_name`, `first_name`, `middle_initial`, `suffix`, `date_of_birth`, `age`, `zone`, `barangay`, `municipality`, `province`, `license_number`, `license_type`, `plate_mv_engine_chassis_no`, `vehicle_description`, `apprehension_datetime`, `place_of_apprehension`, `apprehension_officer`, `remarks`, `status`, `payment_date`, `total_fine`, `created_at`, `updated_at`, `created_by`) VALUES
-(10, '06102', 2, 'ROSETE', 'RICHMOND', '', '', NULL, NULL, '', 'Agaman Sur', 'Baggao', 'Cagayan', '', 'nonProf', 'UYTR', 'YELLOW', '2025-11-18 15:27:00', 'YTF', 'RICHMOND', '', 'pending', NULL, 500.00, '2025-11-18 15:27:14', '2025-11-25 14:39:04', NULL),
-(11, '06103', 4, 'Mercado', 'Rogelio', 'G', NULL, '2025-11-25', NULL, '1', 'Canagatan', 'Baggao', 'Cagayan', NULL, NULL, '5JK567', 'RIDER 150', '2025-11-25 09:03:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 3000.00, '2025-11-25 09:06:33', '2025-11-25 09:06:33', NULL),
-(12, '06104', 4, 'Mercado', 'Rogelio', 'G', NULL, '2025-11-25', NULL, '1', 'Canagatan', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-25 14:49:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-25 14:49:12', '2025-11-25 14:49:12', NULL),
-(13, '06105', 5, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Asassi', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-25 15:16:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-25 15:16:32', '2025-11-25 15:16:32', NULL);
+(21, '06101', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 13:41:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 13:42:28', 500.00, '2025-11-26 13:41:45', '2025-11-26 13:42:28', NULL),
+(22, '06102', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 13:51:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 15:14:22', 500.00, '2025-11-26 13:51:55', '2025-11-26 15:14:22', NULL),
+(23, '06103', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:14:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 15:15:27', 500.00, '2025-11-26 15:14:50', '2025-11-26 15:15:27', NULL),
+(24, '06104', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Annayatan', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:20:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-26 15:20:48', '2025-11-26 15:20:48', NULL),
+(25, '06105', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Bagunot', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:26:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-26 15:26:51', '2025-11-26 15:26:51', NULL),
+(26, '06106', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:26:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 16:31:20', 1000.00, '2025-11-26 16:26:31', '2025-11-26 16:31:20', NULL),
+(27, '06107', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bitag Grande', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:31:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 16:33:43', 1000.00, '2025-11-26 16:31:38', '2025-11-26 16:33:43', NULL),
+(28, '06108', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:33:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-26 16:34:10', '2025-11-26 16:34:10', NULL),
+(29, '06109', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:37:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-26 16:37:16', '2025-11-26 16:37:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,10 +145,15 @@ CREATE TABLE `citation_vehicles` (
 --
 
 INSERT INTO `citation_vehicles` (`vehicle_id`, `citation_id`, `vehicle_type`, `created_at`) VALUES
-(18, 10, 'Motorcycle', '2025-11-18 15:27:14'),
-(19, 11, 'Motorcycle', '2025-11-25 09:06:33'),
-(20, 12, 'Motorcycle', '2025-11-25 14:49:12'),
-(21, 13, 'Motorcycle', '2025-11-25 15:16:32');
+(29, 21, 'Motorcycle', '2025-11-26 13:41:45'),
+(30, 22, 'Motorcycle', '2025-11-26 13:51:55'),
+(31, 23, 'Motorcycle', '2025-11-26 15:14:50'),
+(32, 24, 'Motorcycle', '2025-11-26 15:20:48'),
+(33, 25, 'Motorcycle', '2025-11-26 15:26:51'),
+(34, 26, 'Motorcycle', '2025-11-26 16:26:31'),
+(35, 27, 'Motorcycle', '2025-11-26 16:31:38'),
+(36, 28, 'Motorcycle', '2025-11-26 16:34:10'),
+(37, 29, 'Motorcycle', '2025-11-26 16:37:16');
 
 -- --------------------------------------------------------
 
@@ -161,9 +184,8 @@ CREATE TABLE `drivers` (
 --
 
 INSERT INTO `drivers` (`driver_id`, `last_name`, `first_name`, `middle_initial`, `suffix`, `date_of_birth`, `age`, `zone`, `barangay`, `municipality`, `province`, `license_number`, `license_type`, `created_at`, `updated_at`) VALUES
-(2, 'ROSETE', 'RICHMOND', '', '', NULL, NULL, '', 'Agaman Sur', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-18 15:26:38', '2025-11-25 09:06:22'),
-(4, 'Mercado', 'Rogelio', 'G', NULL, '2025-11-25', NULL, '1', 'Canagatan', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-25 09:06:33', '2025-11-25 14:49:12'),
-(5, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Asassi', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-25 15:16:32', NULL);
+(6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Bagunot', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-26 13:41:45', '2025-11-26 15:26:51'),
+(7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-26 16:26:31', '2025-11-26 16:37:16');
 
 -- --------------------------------------------------------
 
@@ -184,7 +206,7 @@ CREATE TABLE `payments` (
   `check_bank` varchar(100) DEFAULT NULL,
   `check_date` date DEFAULT NULL,
   `notes` text DEFAULT NULL,
-  `status` enum('completed','pending','failed','refunded','cancelled') DEFAULT 'completed',
+  `status` enum('completed','pending','pending_print','failed','refunded','cancelled','voided') DEFAULT 'completed' COMMENT 'Payment status',
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores payment transactions for traffic citations';
@@ -194,10 +216,15 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`payment_id`, `citation_id`, `amount_paid`, `payment_method`, `payment_date`, `reference_number`, `receipt_number`, `collected_by`, `check_number`, `check_bank`, `check_date`, `notes`, `status`, `created_at`, `updated_at`) VALUES
-(1, 10, 500.00, 'cash', '2025-11-25 02:22:13', NULL, 'OR-2025-000001', 1, NULL, NULL, NULL, 'Test payment created via create_test_payment.php', 'completed', '2025-11-25 09:22:13', '2025-11-25 09:22:13'),
-(2, 11, 3000.00, 'cash', '2025-11-25 07:33:44', NULL, 'OR-2025-000002', 1, NULL, NULL, NULL, '', 'completed', '2025-11-25 14:33:44', '2025-11-25 14:33:44'),
-(3, 12, 1000.00, 'cash', '2025-11-25 07:49:30', NULL, 'OR-2025-000003', 1, NULL, NULL, NULL, '', 'completed', '2025-11-25 14:49:30', '2025-11-25 14:49:30'),
-(4, 13, 500.00, 'cash', '2025-11-25 08:17:06', NULL, 'OR-2025-000004', 1, NULL, NULL, NULL, '', 'completed', '2025-11-25 15:17:06', '2025-11-25 15:17:06');
+(13, 21, 500.00, 'cash', '2025-11-26 06:42:08', NULL, '557487897', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 13:42:08', '2025-11-26 13:42:28'),
+(14, 22, 500.00, 'cash', '2025-11-26 07:57:44', NULL, '84245765', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 14:57:44', '2025-11-26 15:14:22'),
+(15, 23, 500.00, 'cash', '2025-11-26 08:15:09', NULL, '53565656526', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 15:15:09', '2025-11-26 15:15:27'),
+(16, 24, 500.00, 'cash', '2025-11-26 08:21:07', NULL, '5689898494', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-26 15:21:07', '2025-11-26 15:26:08'),
+(17, 25, 500.00, 'cash', '2025-11-26 08:27:06', NULL, '65896856', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-26 15:27:06', '2025-11-26 15:28:00'),
+(18, 26, 1000.00, 'cash', '2025-11-26 09:26:54', NULL, 'HJHU6878788987', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 16:26:54', '2025-11-26 16:31:20'),
+(19, 27, 1000.00, 'cash', '2025-11-26 09:31:50', NULL, 'HJHU6878788988', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 16:31:50', '2025-11-26 16:33:43'),
+(20, 28, 500.00, 'cash', '2025-11-26 09:34:28', NULL, 'HJHU6878788985', 1, NULL, NULL, NULL, '', 'pending_print', '2025-11-26 16:34:28', '2025-11-26 16:34:28'),
+(21, 29, 1000.00, 'cash', '2025-11-26 09:38:39', NULL, 'GHGJ345679', 1, NULL, NULL, NULL, '', 'pending_print', '2025-11-26 16:38:39', '2025-11-26 16:38:39');
 
 -- --------------------------------------------------------
 
@@ -245,10 +272,15 @@ CREATE TABLE `receipts` (
 --
 
 INSERT INTO `receipts` (`receipt_id`, `payment_id`, `receipt_number`, `generated_at`, `generated_by`, `printed_at`, `print_count`, `last_printed_by`, `last_printed_at`, `status`, `cancellation_reason`, `cancelled_by`, `cancelled_at`) VALUES
-(1, 1, 'OR-2025-000001', '2025-11-25 09:22:13', 1, NULL, 10, 1, '2025-11-25 14:14:21', 'active', NULL, NULL, NULL),
-(2, 2, 'OR-2025-000002', '2025-11-25 14:33:44', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL),
-(3, 3, 'OR-2025-000003', '2025-11-25 14:49:30', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL),
-(4, 4, 'OR-2025-000004', '2025-11-25 15:17:06', 1, NULL, 4, 1, '2025-11-25 15:20:28', 'active', NULL, NULL, NULL);
+(13, 13, '557487897', '2025-11-26 13:42:08', 1, '2025-11-26 13:42:28', 1, 1, '2025-11-26 13:42:28', 'active', NULL, NULL, NULL),
+(14, 14, '84245765', '2025-11-26 14:57:44', 1, '2025-11-26 15:14:22', 1, 1, '2025-11-26 15:14:22', 'active', NULL, NULL, NULL),
+(15, 15, '53565656526', '2025-11-26 15:15:09', 1, '2025-11-26 15:15:27', 1, 1, '2025-11-26 15:15:27', 'active', NULL, NULL, NULL),
+(16, 16, '5689898494', '2025-11-26 15:21:07', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-26 15:26:08'),
+(17, 17, '65896856', '2025-11-26 15:27:06', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-26 15:28:00'),
+(18, 18, 'HJHU6878788987', '2025-11-26 16:26:54', 1, '2025-11-26 16:31:20', 1, 1, '2025-11-26 16:31:20', 'active', NULL, NULL, NULL),
+(19, 19, 'HJHU6878788988', '2025-11-26 16:31:50', 1, '2025-11-26 16:33:43', 1, 1, '2025-11-26 16:33:43', 'active', NULL, NULL, NULL),
+(20, 20, 'HJHU6878788985', '2025-11-26 16:34:28', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL),
+(21, 21, 'GHGJ345679', '2025-11-26 16:38:39', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -268,7 +300,7 @@ CREATE TABLE `receipt_sequence` (
 --
 
 INSERT INTO `receipt_sequence` (`id`, `current_year`, `current_number`, `last_updated`) VALUES
-(1, 2025, 4, '2025-11-25 15:17:06');
+(1, 2025, 7, '2025-11-26 08:37:32');
 
 -- --------------------------------------------------------
 
@@ -295,7 +327,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password_hash`, `full_name`, `email`, `role`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`) VALUES
-(1, 'admin', '$2y$10$mmjBnDB0cU4krnO/uPuwF.Qs8Cja0Md.lHAcf2pGqFx3K0k/4nz8.', 'System Administrator', 'admin@traffic.gov', 'admin', 'active', '2025-11-25 16:29:41', '2025-11-17 13:23:47', '2025-11-25 16:29:41', NULL),
+(1, 'admin', '$2y$10$mmjBnDB0cU4krnO/uPuwF.Qs8Cja0Md.lHAcf2pGqFx3K0k/4nz8.', 'System Administrator', 'admin@traffic.gov', 'admin', 'active', '2025-11-26 16:24:50', '2025-11-17 13:23:47', '2025-11-26 16:24:50', NULL),
 (2, 'rich', '$2y$10$t4YFwv7NpVvZcH7jlFNI5uYble6KlFP2Wx8vBw3wq7YcKMVe0q7Rq', 'richmond', 'richmondrosete19@gmail.com', 'cashier', 'active', '2025-11-25 16:30:09', '2025-11-25 14:12:51', '2025-11-25 16:30:09', NULL);
 
 -- --------------------------------------------------------
@@ -318,12 +350,18 @@ CREATE TABLE `violations` (
 --
 
 INSERT INTO `violations` (`violation_id`, `citation_id`, `violation_type_id`, `offense_count`, `fine_amount`, `created_at`) VALUES
-(21, 10, 29, 2, 500.00, '2025-11-18 15:27:14'),
-(22, 11, 5, 1, 2500.00, '2025-11-25 09:06:33'),
-(23, 11, 28, 1, 500.00, '2025-11-25 09:06:33'),
-(24, 12, 29, 1, 500.00, '2025-11-25 14:49:12'),
-(25, 12, 28, 2, 500.00, '2025-11-25 14:49:12'),
-(26, 13, 29, 1, 500.00, '2025-11-25 15:16:32');
+(34, 21, 29, 1, 500.00, '2025-11-26 13:41:45'),
+(35, 22, 29, 2, 500.00, '2025-11-26 13:51:55'),
+(36, 23, 29, 3, 500.00, '2025-11-26 15:14:50'),
+(37, 24, 29, 3, 500.00, '2025-11-26 15:20:48'),
+(38, 25, 29, 3, 500.00, '2025-11-26 15:26:51'),
+(39, 26, 29, 1, 500.00, '2025-11-26 16:26:31'),
+(40, 26, 28, 1, 500.00, '2025-11-26 16:26:31'),
+(41, 27, 29, 2, 500.00, '2025-11-26 16:31:38'),
+(42, 27, 28, 2, 500.00, '2025-11-26 16:31:38'),
+(43, 28, 28, 3, 500.00, '2025-11-26 16:34:10'),
+(44, 29, 29, 3, 500.00, '2025-11-26 16:37:16'),
+(45, 29, 28, 3, 500.00, '2025-11-26 16:37:16');
 
 --
 -- Triggers `violations`
@@ -598,31 +636,31 @@ ALTER TABLE `apprehending_officers`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `citations`
 --
 ALTER TABLE `citations`
-  MODIFY `citation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `citation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `citation_vehicles`
 --
 ALTER TABLE `citation_vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `payment_audit`
@@ -634,7 +672,7 @@ ALTER TABLE `payment_audit`
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -646,7 +684,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `violations`
 --
 ALTER TABLE `violations`
-  MODIFY `violation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `violation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `violation_types`

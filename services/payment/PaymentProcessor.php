@@ -69,7 +69,8 @@ class PaymentProcessor {
             $checkBank = $additionalData['check_bank'] ?? null;
             $checkDate = $additionalData['check_date'] ?? null;
             $notes = $additionalData['notes'] ?? null;
-            $status = $additionalData['status'] ?? 'completed';
+            // Set status to 'pending_print' - will be changed to 'completed' after print confirmation
+            $status = $additionalData['status'] ?? 'pending_print';
 
             // 5. Insert payment record
             $sql = "INSERT INTO payments (
@@ -100,8 +101,9 @@ class PaymentProcessor {
 
             $paymentId = $this->pdo->lastInsertId();
 
-            // 6. Update citation status to 'paid'
-            $this->updateCitationStatus($citationId, 'paid', $collectedBy, 'Payment completed - Receipt: ' . $receiptNumber);
+            // 6. DO NOT update citation status yet - wait for print confirmation
+            // Citation status will be updated to 'paid' after cashier confirms receipt printed successfully
+            // This prevents OR number mismatch if printer jams
 
             // 7. Create receipt record
             $this->createReceiptRecord($paymentId, $receiptNumber, $collectedBy);
@@ -253,6 +255,241 @@ class PaymentProcessor {
             return [
                 'success' => false,
                 'message' => 'Error updating citation status: ' . $e->getMessage()
+            ];
+        }
+    }
+
+    /**
+     * Finalize payment after successful print confirmation
+     * Updates payment status to 'completed' and citation status to 'paid'
+     *
+     * @param int $paymentId Payment ID
+     * @param int $userId User ID confirming the print
+     * @return array Result with success and message
+     */
+    public function finalizePayment($paymentId, $userId) {
+        try {
+            $this->pdo->beginTransaction();
+
+            // Get payment details
+            $sql = "SELECT p.*, c.status as citation_status
+                    FROM payments p
+                    JOIN citations c ON p.citation_id = c.citation_id
+                    WHERE p.payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([':payment_id' => $paymentId]);
+            $payment = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$payment) {
+                throw new Exception('Payment not found');
+            }
+
+            if ($payment['status'] !== 'pending_print') {
+                throw new Exception('Payment is not in pending_print status');
+            }
+
+            // Update payment status to completed
+            $sql = "UPDATE payments
+                    SET status = 'completed'
+                    WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([':payment_id' => $paymentId]);
+
+            // Update citation status to paid
+            $this->updateCitationStatus(
+                $payment['citation_id'],
+                'paid',
+                $userId,
+                'Payment confirmed and receipt printed successfully - Receipt: ' . $payment['receipt_number']
+            );
+
+            // Update receipt print tracking
+            $sql = "UPDATE receipts
+                    SET printed_at = NOW(),
+                        print_count = print_count + 1,
+                        last_printed_by = :user_id,
+                        last_printed_at = NOW()
+                    WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':payment_id' => $paymentId,
+                ':user_id' => $userId
+            ]);
+
+            $this->pdo->commit();
+
+            return [
+                'success' => true,
+                'message' => 'Payment finalized successfully'
+            ];
+
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            return [
+                'success' => false,
+                'message' => 'Error finalizing payment: ' . $e->getMessage()
+            ];
+        }
+    }
+
+    /**
+     * Update OR number for a pending_print payment
+     * Used when cashier needs to use different receipt due to printer jam
+     *
+     * @param int $paymentId Payment ID
+     * @param string $newOrNumber New OR number from physical receipt
+     * @param int $userId User ID making the change
+     * @param string $reason Reason for OR change
+     * @return array Result with success and message
+     */
+    public function updateOrNumber($paymentId, $newOrNumber, $userId, $reason) {
+        try {
+            $this->pdo->beginTransaction();
+
+            // Get payment details
+            $sql = "SELECT * FROM payments WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([':payment_id' => $paymentId]);
+            $payment = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$payment) {
+                throw new Exception('Payment not found');
+            }
+
+            if ($payment['status'] !== 'pending_print') {
+                throw new Exception('Can only update OR number for pending_print payments');
+            }
+
+            // Validate new OR number
+            $orValidation = $this->validator->validateReceiptNumber($newOrNumber);
+            if (!$orValidation['valid']) {
+                throw new Exception($orValidation['message']);
+            }
+
+            $oldOrNumber = $payment['receipt_number'];
+
+            // Update payment OR number
+            $sql = "UPDATE payments
+                    SET receipt_number = :new_or,
+                        notes = CONCAT(COALESCE(notes, ''), '\n[OR CHANGED] Old: ', :old_or, ' → New: ', :new_or, ' | Reason: ', :reason)
+                    WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':payment_id' => $paymentId,
+                ':new_or' => $newOrNumber,
+                ':old_or' => $oldOrNumber,
+                ':reason' => $reason
+            ]);
+
+            // Update receipt record
+            $sql = "UPDATE receipts
+                    SET receipt_number = :new_or
+                    WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':payment_id' => $paymentId,
+                ':new_or' => $newOrNumber
+            ]);
+
+            // Log to audit trail
+            $this->auditService->logPaymentAction(
+                $paymentId,
+                'or_number_changed',
+                ['receipt_number' => $oldOrNumber],
+                ['receipt_number' => $newOrNumber],
+                $userId
+            );
+
+            $this->pdo->commit();
+
+            return [
+                'success' => true,
+                'message' => 'OR number updated successfully',
+                'new_or' => $newOrNumber
+            ];
+
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            return [
+                'success' => false,
+                'message' => 'Error updating OR number: ' . $e->getMessage()
+            ];
+        }
+    }
+
+    /**
+     * Void a pending_print payment
+     * Used when cashier cancels payment due to errors or printer issues
+     *
+     * @param int $paymentId Payment ID
+     * @param int $userId User ID voiding the payment
+     * @param string $reason Reason for voiding
+     * @return array Result with success and message
+     */
+    public function voidPayment($paymentId, $userId, $reason) {
+        try {
+            $this->pdo->beginTransaction();
+
+            // Get payment details
+            $sql = "SELECT * FROM payments WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([':payment_id' => $paymentId]);
+            $payment = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$payment) {
+                throw new Exception('Payment not found');
+            }
+
+            if ($payment['status'] !== 'pending_print') {
+                throw new Exception('Can only void pending_print payments');
+            }
+
+            // Update payment status to voided
+            $sql = "UPDATE payments
+                    SET status = 'voided',
+                        notes = CONCAT(COALESCE(notes, ''), '\n[VOIDED] Reason: ', :reason)
+                    WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':payment_id' => $paymentId,
+                ':reason' => $reason
+            ]);
+
+            // Update receipt status to void
+            $sql = "UPDATE receipts
+                    SET status = 'void',
+                        cancellation_reason = :reason,
+                        cancelled_by = :user_id,
+                        cancelled_at = NOW()
+                    WHERE payment_id = :payment_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':payment_id' => $paymentId,
+                ':reason' => $reason,
+                ':user_id' => $userId
+            ]);
+
+            // Log to audit trail
+            $this->auditService->logPaymentAction(
+                $paymentId,
+                'voided',
+                ['status' => $payment['status']],
+                ['status' => 'voided', 'reason' => $reason],
+                $userId
+            );
+
+            $this->pdo->commit();
+
+            return [
+                'success' => true,
+                'message' => 'Payment voided successfully'
+            ];
+
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            return [
+                'success' => false,
+                'message' => 'Error voiding payment: ' . $e->getMessage()
             ];
         }
     }

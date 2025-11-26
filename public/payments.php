@@ -34,32 +34,42 @@ if (!can_process_payment()) {
 $pageTitle = 'Payment Management';
 
 // Initialize PaymentService
-$paymentService = new PaymentService(getPDO());
-
-// Get today's statistics
-$todayStats = $paymentService->getPaymentStatistics([
-    'from' => date('Y-m-d'),
-    'to' => date('Y-m-d')
-]);
-
-// Get this week's statistics
-$weekStart = date('Y-m-d', strtotime('monday this week'));
-$weekStats = $paymentService->getPaymentStatistics([
-    'from' => $weekStart,
-    'to' => date('Y-m-d')
-]);
-
-// Get this month's statistics
-$monthStats = $paymentService->getPaymentStatistics([
-    'from' => date('Y-m-01'),
-    'to' => date('Y-m-d')
-]);
-
-// Get all cashiers for filter
 $pdo = getPDO();
-$sql = "SELECT DISTINCT user_id, full_name FROM users WHERE role IN ('admin', 'cashier') ORDER BY full_name";
-$stmt = $pdo->query($sql);
-$cashiers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Check if database connection failed
+if ($pdo === null) {
+    set_flash('Database connection failed. Please check if MySQL is running and try again.', 'danger');
+    $todayStats = ['total_amount' => 0, 'total_payments' => 0];
+    $weekStats = ['total_amount' => 0, 'total_payments' => 0];
+    $monthStats = ['total_amount' => 0, 'total_payments' => 0];
+    $cashiers = [];
+} else {
+    $paymentService = new PaymentService($pdo);
+
+    // Get today's statistics
+    $todayStats = $paymentService->getPaymentStatistics([
+        'from' => date('Y-m-d'),
+        'to' => date('Y-m-d')
+    ]);
+
+    // Get this week's statistics
+    $weekStart = date('Y-m-d', strtotime('monday this week'));
+    $weekStats = $paymentService->getPaymentStatistics([
+        'from' => $weekStart,
+        'to' => date('Y-m-d')
+    ]);
+
+    // Get this month's statistics
+    $monthStats = $paymentService->getPaymentStatistics([
+        'from' => date('Y-m-01'),
+        'to' => date('Y-m-d')
+    ]);
+
+    // Get all cashiers for filter
+    $sql = "SELECT DISTINCT user_id, full_name FROM users WHERE role IN ('admin', 'cashier') ORDER BY full_name";
+    $stmt = $pdo->query($sql);
+    $cashiers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
