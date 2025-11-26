@@ -15,3 +15,230 @@
 [25-Nov-2025 08:20:22 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
 [25-Nov-2025 08:20:27 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
 [25-Nov-2025 08:20:27 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[26-Nov-2025 01:17:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 01:17:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $search in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 67
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 68
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 69
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 70
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Warning:  Undefined variable $total_pages in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 179
+[26-Nov-2025 01:20:10 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function generate_token() in C:\xampp\htdocs\vlad\templates\citations-list-content.php:315
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 315
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $search in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 67
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 68
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 69
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 70
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $total_pages in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 179
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function generate_token() in C:\xampp\htdocs\vlad\templates\citations-list-content.php:315
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 315
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $search in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 67
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 68
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 69
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 70
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $total_pages in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 179
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function generate_token() in C:\xampp\htdocs\vlad\templates\citations-list-content.php:315
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 315
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $search in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 67
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 68
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 69
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 70
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Warning:  Undefined variable $total_pages in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 179
+[26-Nov-2025 01:20:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function generate_token() in C:\xampp\htdocs\vlad\templates\citations-list-content.php:315
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 315
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $search in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 67
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 68
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 69
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 70
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Warning:  Undefined variable $total_pages in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 179
+[26-Nov-2025 01:21:10 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function generate_token() in C:\xampp\htdocs\vlad\templates\citations-list-content.php:315
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 315
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 33
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 37
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 41
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 45
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $stats in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 49
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $search in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 59
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 60
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 67
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 68
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 69
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $status_filter in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 70
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Warning:  Undefined variable $total_pages in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 179
+[26-Nov-2025 01:21:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function generate_token() in C:\xampp\htdocs\vlad\templates\citations-list-content.php:315
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\templates\citations-list-content.php on line 315
+[26-Nov-2025 01:21:33 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 01:21:33 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 01:22:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 01:22:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 01:25:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\refund_payment.php on line 49
+[26-Nov-2025 01:27:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 01:27:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 01:32:11 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\update_citation_status.php on line 49
+[26-Nov-2025 01:32:11 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\update_citation_status.php on line 50
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:32:48 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Warning:  Undefined array key "badge_number" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 51
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Warning:  Undefined array key "position" in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:33:26 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\templates\reports\officers-report.php on line 52
+[26-Nov-2025 01:37:32 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 01:37:32 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 01:38:20 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[26-Nov-2025 01:38:23 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[26-Nov-2025 01:39:06 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
+[26-Nov-2025 01:39:06 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\vlad\public\search.php on line 389
+[26-Nov-2025 01:39:39 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function set_flash_message() in C:\xampp\htdocs\vlad\admin\driver_duplicates.php:42
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\vlad\admin\driver_duplicates.php on line 42
+[26-Nov-2025 01:43:15 Europe/Berlin] Citation 15 status changed from 'paid' to 'pending' by admin
+[26-Nov-2025 01:43:29 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 01:43:29 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 01:44:10 Europe/Berlin] Citation 15 status changed from 'pending' to 'paid' by admin
+[26-Nov-2025 01:45:40 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[26-Nov-2025 01:46:29 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30
+[26-Nov-2025 01:47:48 Europe/Berlin] Citation 15 status changed from 'paid' to 'pending' by admin
+[26-Nov-2025 02:22:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 02:22:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 02:22:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 02:23:21 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\update_citation_status.php on line 49
+[26-Nov-2025 02:23:21 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\update_citation_status.php on line 50
+[26-Nov-2025 02:23:33 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_print.php on line 29
+[26-Nov-2025 02:24:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 02:24:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 02:24:14 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 03:34:42 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 50
+[26-Nov-2025 03:34:42 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 84
+[26-Nov-2025 03:34:42 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_process.php on line 91
+[26-Nov-2025 03:35:09 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\payment_list.php on line 40
+[26-Nov-2025 03:52:36 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_print.php on line 29
+[26-Nov-2025 04:53:40 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\vlad\api\receipt_generate.php on line 30

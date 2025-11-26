@@ -48,7 +48,7 @@ $sql = "SELECT
         FROM citations c
         LEFT JOIN violations v ON c.citation_id = v.citation_id
         LEFT JOIN violation_types vt ON v.violation_type_id = vt.violation_type_id
-        WHERE c.status IN ('pending', 'unpaid')
+        WHERE c.status = 'pending'
         GROUP BY c.citation_id
         ORDER BY c.apprehension_datetime DESC";
 
@@ -557,6 +557,25 @@ $pendingCitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <option value="bank_transfer">Bank Transfer</option>
                                 <option value="check">Check</option>
                             </select>
+                        </div>
+
+                        <!-- OR/Receipt Number (REQUIRED - Manual Entry) -->
+                        <div class="mb-3">
+                            <label for="receipt_number" class="form-label">
+                                <i class="fas fa-receipt"></i> Official Receipt (OR) Number *
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="receipt_number"
+                                name="receipt_number"
+                                required
+                                placeholder="Enter OR number from physical receipt (e.g., CGVM15320501)"
+                                style="font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.1rem;"
+                            >
+                            <div class="form-text">
+                                <i class="fas fa-info-circle"></i> Enter the OR number exactly as it appears on the physical receipt booklet.
+                            </div>
                         </div>
 
                         <!-- Cash Received (only for cash payments) -->

@@ -40,6 +40,7 @@ function openPaymentModal(citation) {
     document.getElementById('paymentForm').reset();
     document.getElementById('citation_id').value = citation.citation_id;
     document.getElementById('payment_method').value = 'cash';
+    document.getElementById('receipt_number').value = '';
     document.getElementById('cash_received').value = '';
     document.getElementById('changeDisplay').style.display = 'none';
 
@@ -113,6 +114,14 @@ function handlePaymentSubmit(e) {
     const paymentMethod = document.getElementById('payment_method').value;
     const amountDue = parseFloat(document.getElementById('modal_amount').textContent);
     const cashReceived = parseFloat(document.getElementById('cash_received').value) || 0;
+    const receiptNumber = document.getElementById('receipt_number').value.trim();
+
+    // Validation for OR/receipt number (REQUIRED)
+    if (!receiptNumber) {
+        showAlert('OR/Receipt number is required! Please enter the OR number from the physical receipt.', 'danger');
+        document.getElementById('receipt_number').focus();
+        return;
+    }
 
     // Validation for cash payments
     if (paymentMethod === 'cash' && cashReceived < amountDue) {

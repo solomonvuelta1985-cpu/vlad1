@@ -68,6 +68,13 @@
             </a>
         </li>
         <?php endif; ?>
+        <?php if (function_exists('is_admin') && is_admin()): ?>
+        <li>
+            <a href="/vlad/public/refund_payment.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'refund_payment.php') ? 'active' : ''; ?>" title="Refund Payments">
+                <i class="fas fa-undo"></i> <span>Refund Payments</span>
+            </a>
+        </li>
+        <?php endif; ?>
 
         <!-- Management Section -->
         <li class="sidebar-divider"></li>
@@ -112,6 +119,11 @@
         <li>
             <a href="/vlad/admin/database_diagnostics.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'database_diagnostics.php') ? 'active' : ''; ?>" title="Database Diagnostics">
                 <i class="fas fa-database"></i> <span>Database Diagnostics</span>
+            </a>
+        </li>
+        <li>
+            <a href="/vlad/public/audit_log.php" class="<?php echo (basename($_SERVER['PHP_SELF']) === 'audit_log.php') ? 'active' : ''; ?>" title="Audit Log">
+                <i class="fas fa-clipboard-list"></i> <span>Audit Log</span>
             </a>
         </li>
         <?php endif; ?>

@@ -76,11 +76,12 @@ $cashiers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../assets/css/payments.css">
 </head>
 <body>
-    <!-- Navigation (you may want to include your sidebar here) -->
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Main Content -->
-            <main class="col-md-12 ms-sm-auto px-md-4">
+    <?php include 'sidebar.php'; ?>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="container-fluid">
+            <main>
                 <!-- Page Header -->
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">

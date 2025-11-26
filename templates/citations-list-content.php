@@ -147,20 +147,10 @@ $can_pay = function_exists('can_process_payment') && can_process_payment();
                                 <button type="button" class="btn btn-info btn-sm" onclick="viewCitation(<?php echo $citation['citation_id']; ?>)" title="View">
                                     <i class="fas fa-eye"></i>
                                 </button>
-                                <?php if ($can_change_status): ?>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" title="Update Status">
-                                        <i class="fas fa-tasks"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#" onclick="quickStatusUpdate(<?php echo $citation['citation_id']; ?>, 'paid')"><i class="fas fa-check-circle text-success"></i> Mark as Paid</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="quickStatusUpdate(<?php echo $citation['citation_id']; ?>, 'contested')"><i class="fas fa-gavel text-primary"></i> Contest</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="quickStatusUpdate(<?php echo $citation['citation_id']; ?>, 'dismissed')"><i class="fas fa-times-circle text-secondary"></i> Dismiss</a></li>
-                                        <li><a class="dropdown-item" href="#" onclick="quickStatusUpdate(<?php echo $citation['citation_id']; ?>, 'void')"><i class="fas fa-ban text-danger"></i> Void</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#" onclick="quickStatusUpdate(<?php echo $citation['citation_id']; ?>, 'pending')"><i class="fas fa-clock text-warning"></i> Reset to Pending</a></li>
-                                    </ul>
-                                </div>
+                                <?php if (is_admin()): ?>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='manage_citation_status.php?id=<?php echo $citation['citation_id']; ?>'" title="Manage Status">
+                                    <i class="fas fa-tasks"></i>
+                                </button>
                                 <?php endif; ?>
                                 <?php if ($can_edit): ?>
                                 <button type="button" class="btn btn-warning btn-sm" onclick="editCitation(<?php echo $citation['citation_id']; ?>)" title="Edit">
