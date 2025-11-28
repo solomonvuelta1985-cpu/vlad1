@@ -144,29 +144,44 @@ $can_pay = function_exists('can_process_payment') && can_process_payment();
                                 </span>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-info btn-sm" onclick="viewCitation(<?php echo $citation['citation_id']; ?>)" title="View">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                                <?php if (is_admin()): ?>
-                                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='manage_citation_status.php?id=<?php echo $citation['citation_id']; ?>'" title="Manage Status">
-                                    <i class="fas fa-tasks"></i>
-                                </button>
-                                <?php endif; ?>
-                                <?php if ($can_edit): ?>
-                                <button type="button" class="btn btn-warning btn-sm" onclick="editCitation(<?php echo $citation['citation_id']; ?>)" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <?php endif; ?>
-                                <?php if ($can_pay && $citation['status'] !== 'paid'): ?>
-                                <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='/vlad/public/payments.php?citation_id=<?php echo $citation['citation_id']; ?>'" title="Process Payment">
-                                    <i class="fas fa-money-bill"></i>
-                                </button>
-                                <?php endif; ?>
-                                <?php if (is_admin()): ?>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="deleteCitation(<?php echo $citation['citation_id']; ?>)" title="Delete">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                                <?php endif; ?>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-info btn-sm" onclick="viewCitation(<?php echo $citation['citation_id']; ?>)" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" title="More Actions">
+                                        <span class="visually-hidden">More actions</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($can_pay && $citation['status'] !== 'paid'): ?>
+                                        <li>
+                                            <a class="dropdown-item" href="/vlad/public/process_payment.php?citation_id=<?php echo $citation['citation_id']; ?>">
+                                                <i class="fas fa-money-bill text-success"></i> Process Payment
+                                            </a>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <?php endif; ?>
+                                        <?php if ($can_edit): ?>
+                                        <li>
+                                            <a class="dropdown-item" href="#" onclick="editCitation(<?php echo $citation['citation_id']; ?>); return false;">
+                                                <i class="fas fa-edit text-warning"></i> Edit Citation
+                                            </a>
+                                        </li>
+                                        <?php endif; ?>
+                                        <li>
+                                            <a class="dropdown-item" href="#" onclick="quickInfo(<?php echo $citation['citation_id']; ?>); return false;">
+                                                <i class="fas fa-info-circle text-primary"></i> Quick Summary
+                                            </a>
+                                        </li>
+                                        <?php if (is_admin()): ?>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" href="#" onclick="deleteCitation(<?php echo $citation['citation_id']; ?>); return false;">
+                                                <i class="fas fa-trash"></i> Delete Citation
+                                            </a>
+                                        </li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -236,10 +251,15 @@ $can_pay = function_exists('can_process_payment') && can_process_payment();
 
 <!-- View Citation Modal -->
 <div class="modal fade" id="viewModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fas fa-file-alt"></i> Citation Details</h5>
+                <h5 class="modal-title">
+                    <div class="modal-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <span>Citation Details</span>
+                </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body" id="viewModalContent">
@@ -256,7 +276,6 @@ $can_pay = function_exists('can_process_payment') && can_process_payment();
                         <i class="fas fa-tasks"></i> Update Status
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#" onclick="openStatusModal('paid')"><i class="fas fa-check-circle text-success"></i> Mark as Paid</a></li>
                         <li><a class="dropdown-item" href="#" onclick="openStatusModal('contested')"><i class="fas fa-gavel text-primary"></i> Contest Citation</a></li>
                         <li><a class="dropdown-item" href="#" onclick="openStatusModal('dismissed')"><i class="fas fa-times-circle text-secondary"></i> Dismiss Citation</a></li>
                         <li><a class="dropdown-item" href="#" onclick="openStatusModal('void')"><i class="fas fa-ban text-danger"></i> Void Citation</a></li>
@@ -279,9 +298,14 @@ $can_pay = function_exists('can_process_payment') && can_process_payment();
 <div class="modal fade" id="quickInfoModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title"><i class="fas fa-info-circle"></i> Quick Summary</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <div class="modal-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <span>Quick Summary</span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body" id="quickInfoContent">
                 <div class="text-center py-3">
@@ -305,7 +329,12 @@ $can_pay = function_exists('can_process_payment') && can_process_payment();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fas fa-tasks"></i> Update Citation Status</h5>
+                <h5 class="modal-title">
+                    <div class="modal-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <span>Update Citation Status</span>
+                </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">

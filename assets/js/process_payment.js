@@ -6,7 +6,6 @@
 let paymentModal;
 let currentCitation = null;
 let formIsDirty = false;
-let receiptLoadTimeout = null;
 
 // OR Number validation pattern (2-4 uppercase letters followed by 6-10 digits)
 const OR_NUMBER_PATTERN = /^[A-Z]{2,4}[0-9]{6,10}$/;
@@ -37,10 +36,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /**
  * Open payment modal with citation data
+ * First checks if citation already has a pending_print payment
  */
 function openPaymentModal(citation) {
     currentCitation = citation;
 
+    // Check for existing pending_print payment first
+    fetch(`/vlad/api/check_pending_payment.php?citation_id=${citation.citation_id}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.has_pending) {
+                // Citation has a pending payment - show resume options
+                showPendingPaymentOptions(data.payment);
+            } else {
+                // No pending payment - proceed with normal flow
+                openNewPaymentForm(citation);
+            }
+        })
+        .catch(error => {
+            console.error('Error checking pending payment:', error);
+            // On error, proceed with normal flow
+            openNewPaymentForm(citation);
+        });
+}
+
+/**
+ * Open new payment form (normal flow)
+ */
+function openNewPaymentForm(citation) {
     // Populate citation details
     document.getElementById('citation_id').value = citation.citation_id;
     document.getElementById('modal_ticket_number').textContent = citation.ticket_number;
@@ -73,24 +96,213 @@ function openPaymentModal(citation) {
 }
 
 /**
+ * Show options for existing pending payment
+ */
+function showPendingPaymentOptions(payment) {
+    Swal.fire({
+        title: 'Pending Payment Found',
+        html: `
+            <div class="text-start">
+                <p class="mb-3">This citation already has a payment that wasn't finalized:</p>
+                <div class="alert alert-warning mb-3">
+                    <strong>OR Number:</strong> <span style="font-family: 'Courier New', monospace; font-weight: bold;">${payment.receipt_number}</span><br>
+                    <strong>Amount:</strong> ₱${parseFloat(payment.amount_paid).toFixed(2)}<br>
+                    <strong>Payment Method:</strong> ${payment.payment_method.replace('_', ' ').toUpperCase()}<br>
+                    <strong>Date:</strong> ${new Date(payment.payment_date).toLocaleString()}
+                </div>
+                <p class="mb-0"><strong>What would you like to do?</strong></p>
+            </div>
+        `,
+        icon: 'info',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: '<i class="fas fa-check-circle"></i> Resume & Print Receipt',
+        denyButtonText: '<i class="fas fa-trash"></i> Void & Start Over',
+        cancelButtonText: '<i class="fas fa-times"></i> Cancel',
+        confirmButtonColor: '#059669',
+        denyButtonColor: '#dc2626',
+        cancelButtonColor: '#6b7280',
+        width: '600px'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Resume existing payment - show summary modal
+            resumePendingPayment(payment);
+        } else if (result.isDenied) {
+            // Void and start over
+            voidAndStartOver(payment.payment_id);
+        }
+        // If dismissed, do nothing
+    });
+}
+
+/**
+ * Resume pending payment - show summary and allow printing
+ */
+function resumePendingPayment(payment) {
+    // Store payment info
+    window.currentPaymentId = payment.payment_id;
+    window.currentReceiptNumber = payment.receipt_number;
+
+    // Build summary content
+    const summaryContent = `
+        <div class="text-center mb-4">
+            <div class="success-icon-wrapper">
+                <i class="fas fa-clock fa-5x text-warning"></i>
+            </div>
+            <h3 class="mt-3 mb-2">Resuming Pending Payment</h3>
+            <p class="text-muted">This payment was recorded but not finalized</p>
+        </div>
+
+        <div class="payment-summary-card">
+            <h6 class="summary-section-title">
+                <i class="fas fa-receipt"></i> Transaction Details
+            </h6>
+            <div class="summary-row">
+                <span class="summary-label">OR Number:</span>
+                <span class="summary-value or-number">${payment.receipt_number}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Ticket Number:</span>
+                <span class="summary-value">${payment.ticket_number}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Driver:</span>
+                <span class="summary-value">${payment.driver_name}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Payment Method:</span>
+                <span class="summary-value text-capitalize">${payment.payment_method.replace('_', ' ')}</span>
+            </div>
+            ${payment.reference_number ? `
+            <div class="summary-row">
+                <span class="summary-label">Reference Number:</span>
+                <span class="summary-value">${payment.reference_number}</span>
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="payment-summary-card mt-3">
+            <h6 class="summary-section-title">
+                <i class="fas fa-money-bill-wave"></i> Payment Breakdown
+            </h6>
+            <div class="summary-row">
+                <span class="summary-label">Amount Paid:</span>
+                <span class="summary-value">₱${parseFloat(payment.amount_paid).toFixed(2)}</span>
+            </div>
+            ${payment.cash_received ? `
+            <div class="summary-row">
+                <span class="summary-label">Cash Received:</span>
+                <span class="summary-value">₱${parseFloat(payment.cash_received).toFixed(2)}</span>
+            </div>
+            <div class="summary-row highlight-change">
+                <span class="summary-label"><strong>Change:</strong></span>
+                <span class="summary-value"><strong>₱${parseFloat(payment.change_amount).toFixed(2)}</strong></span>
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="alert alert-warning mt-4">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Important:</strong> Print the receipt and confirm to complete this transaction.
+        </div>
+    `;
+
+    // Update modal content
+    document.getElementById('paymentSummaryContent').innerHTML = summaryContent;
+
+    // Show modal
+    const summaryModal = new bootstrap.Modal(document.getElementById('printPreviewModal'));
+    summaryModal.show();
+}
+
+/**
+ * Void existing payment and start over
+ */
+function voidAndStartOver(paymentId) {
+    // Check CSRF token exists
+    const csrfToken = document.querySelector('[name="csrf_token"]')?.value;
+    if (!csrfToken) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Security token missing. Please reload the page and try again.',
+            confirmButtonColor: '#dc2626'
+        });
+        return;
+    }
+
+    // Show loading
+    Swal.fire({
+        title: 'Voiding Payment...',
+        text: 'Please wait',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    // Send void request
+    const formData = new FormData();
+    formData.append('payment_id', paymentId);
+    formData.append('reason', 'Voided by cashier - starting new payment transaction');
+    formData.append('csrf_token', csrfToken);
+
+    fetch('/vlad/api/payments/void_payment.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Payment Voided',
+                text: 'Previous payment voided. Opening new payment form...',
+                timer: 1500,
+                showConfirmButton: false
+            }).then(() => {
+                // Now open new payment form
+                openNewPaymentForm(currentCitation);
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message,
+                confirmButtonColor: '#dc2626'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error voiding payment: ' + error.message,
+            confirmButtonColor: '#dc2626'
+        });
+    });
+}
+
+/**
  * Handle payment method change
  */
 function handlePaymentMethodChange() {
     const paymentMethod = document.getElementById('payment_method').value;
-    const cashFields = document.getElementById('cashFields');
+    const cashReceivedField = document.getElementById('cashReceivedField');
     const referenceField = document.getElementById('referenceField');
     const cashReceivedInput = document.getElementById('cash_received');
     const referenceNumberInput = document.getElementById('reference_number');
 
     if (paymentMethod === 'cash') {
-        // Show cash fields, hide reference field
-        cashFields.style.display = 'block';
+        // Show cash field, hide reference field
+        cashReceivedField.style.display = 'block';
         referenceField.style.display = 'none';
         cashReceivedInput.required = true;
         referenceNumberInput.required = false;
     } else {
-        // Hide cash fields, show reference field
-        cashFields.style.display = 'none';
+        // Hide cash field, show reference field
+        cashReceivedField.style.display = 'none';
         referenceField.style.display = 'block';
         cashReceivedInput.required = false;
         referenceNumberInput.required = false;
@@ -139,199 +351,241 @@ function handlePaymentSubmit(e) {
 
     // Validation for OR/receipt number (REQUIRED)
     if (!receiptNumber) {
-        showAlert('OR/Receipt number is required! Please enter the OR number from the physical receipt.', 'danger');
+        Swal.fire({
+            icon: 'error',
+            title: 'OR Number Required',
+            text: 'Please enter the OR number from the physical receipt.',
+            confirmButtonColor: '#dc2626'
+        });
         document.getElementById('receipt_number').focus();
         return;
     }
 
     // Validate OR number format
     if (!OR_NUMBER_PATTERN.test(receiptNumber)) {
-        showAlert('Invalid OR number format! Expected format: 2-4 letters followed by 6-10 digits (e.g., CGVM15320501)', 'danger');
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid OR Format',
+            text: 'Expected format: 2-4 letters followed by 6-10 digits (e.g., CGVM15320501)',
+            confirmButtonColor: '#dc2626'
+        });
         document.getElementById('receipt_number').focus();
         return;
     }
 
     // Validation for cash payments
     if (paymentMethod === 'cash' && cashReceived < amountDue) {
-        showAlert('Cash received is less than the amount due!', 'danger');
+        Swal.fire({
+            icon: 'error',
+            title: 'Insufficient Cash',
+            text: 'Cash received is less than the amount due!',
+            confirmButtonColor: '#dc2626'
+        });
         return;
     }
 
     // Check CSRF token exists
     const csrfToken = document.querySelector('[name="csrf_token"]')?.value;
     if (!csrfToken) {
-        showAlert('Security token missing. Please reload the page and try again.', 'danger');
+        Swal.fire({
+            icon: 'error',
+            title: 'Security Error',
+            text: 'Security token missing. Please reload the page and try again.',
+            confirmButtonColor: '#dc2626'
+        });
         return;
     }
 
     // Confirm payment
-    if (!confirm('Confirm payment processing?\n\nThis action cannot be undone.')) {
-        return;
-    }
+    Swal.fire({
+        title: 'Confirm Payment',
+        text: 'This action cannot be undone. Proceed with payment processing?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Process Payment',
+        cancelButtonText: 'Cancel',
+        confirmButtonColor: '#059669',
+        cancelButtonColor: '#6b7280'
+    }).then((confirmResult) => {
+        if (!confirmResult.isConfirmed) {
+            return;
+        }
 
-    // Disable submit button
-    const submitBtn = document.getElementById('confirmPaymentBtn');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        // Disable submit button
+        const submitBtn = document.getElementById('confirmPaymentBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
-    // Prepare form data
-    const formData = new FormData(e.target);
-    formData.append('amount_paid', amountDue);
+        // Prepare form data
+        const formData = new FormData(e.target);
+        formData.append('amount_paid', amountDue);
 
-    // Calculate change for cash payments
-    if (paymentMethod === 'cash') {
-        formData.append('change_amount', (cashReceived - amountDue).toFixed(2));
-    }
+        // Calculate change for cash payments
+        if (paymentMethod === 'cash') {
+            formData.append('change_amount', (cashReceived - amountDue).toFixed(2));
+        }
 
-    // Submit payment
-    fetch('/vlad/api/payment_process.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Payment recorded with 'pending_print' status
-            formIsDirty = false; // Reset dirty state
-            paymentModal.hide();
+        // Submit payment
+        fetch('/vlad/api/payment_process.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Payment recorded with 'pending_print' status
+                formIsDirty = false; // Reset dirty state
+                paymentModal.hide();
 
-            // Store payment info for later use
-            window.currentPaymentId = data.payment_id;
-            window.currentReceiptNumber = data.receipt_number;
+                // Store payment info for later use
+                window.currentPaymentId = data.payment_id;
+                window.currentReceiptNumber = data.receipt_number;
 
-            // Show receipt in preview modal instead of new tab
-            showReceiptPreview(data.receipt_number, data.payment_id);
-        } else {
-            showAlert('Error: ' + data.message, 'danger');
+                // Show receipt in preview modal instead of new tab
+                showReceiptPreview(data.receipt_number, data.payment_id);
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Payment Failed',
+                    text: data.message,
+                    confirmButtonColor: '#dc2626'
+                });
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Payment';
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error processing payment: ' + error.message,
+                confirmButtonColor: '#dc2626'
+            });
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Payment';
-        }
-    })
-    .catch(error => {
-        showAlert('Error processing payment: ' + error.message, 'danger');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Payment';
+        });
     });
 }
 
 /**
- * Show receipt preview in modal
+ * Show payment summary modal instead of receipt preview
  */
 function showReceiptPreview(receiptNumber, paymentId) {
     // Store payment info
     window.currentPaymentId = paymentId;
     window.currentReceiptNumber = receiptNumber;
 
-    // Get modal elements
-    const previewModal = new bootstrap.Modal(document.getElementById('printPreviewModal'));
-    const loadingDiv = document.getElementById('receiptLoading');
-    const contentDiv = document.getElementById('receiptPreviewContent');
-    const iframe = document.getElementById('receiptIframe');
+    // Get current citation details
+    const citation = currentCitation;
+    const paymentMethod = document.getElementById('payment_method').value;
+    const amountPaid = parseFloat(document.getElementById('modal_amount').textContent);
+    const cashReceived = parseFloat(document.getElementById('cash_received').value) || 0;
+    const changeAmount = (cashReceived - amountPaid).toFixed(2);
+    const referenceNumber = document.getElementById('reference_number').value;
 
-    // Show loading state
-    loadingDiv.style.display = 'block';
-    contentDiv.style.display = 'none';
+    // Build payment summary HTML
+    const summaryContent = `
+        <div class="text-center mb-4">
+            <div class="success-icon-wrapper">
+                <i class="fas fa-check-circle fa-5x text-success"></i>
+            </div>
+            <h3 class="mt-3 mb-2">Payment Successful!</h3>
+            <p class="text-muted">Transaction has been recorded</p>
+        </div>
+
+        <div class="payment-summary-card">
+            <h6 class="summary-section-title">
+                <i class="fas fa-receipt"></i> Transaction Details
+            </h6>
+            <div class="summary-row">
+                <span class="summary-label">OR Number:</span>
+                <span class="summary-value or-number">${receiptNumber}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Ticket Number:</span>
+                <span class="summary-value">${citation.ticket_number}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Driver:</span>
+                <span class="summary-value">${citation.driver_name}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Payment Method:</span>
+                <span class="summary-value text-capitalize">${paymentMethod.replace('_', ' ')}</span>
+            </div>
+            ${referenceNumber ? `
+            <div class="summary-row">
+                <span class="summary-label">Reference Number:</span>
+                <span class="summary-value">${referenceNumber}</span>
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="payment-summary-card mt-3">
+            <h6 class="summary-section-title">
+                <i class="fas fa-money-bill-wave"></i> Payment Breakdown
+            </h6>
+            <div class="summary-row">
+                <span class="summary-label">Amount Due:</span>
+                <span class="summary-value">₱${amountPaid.toFixed(2)}</span>
+            </div>
+            ${paymentMethod === 'cash' ? `
+            <div class="summary-row">
+                <span class="summary-label">Cash Received:</span>
+                <span class="summary-value">₱${cashReceived.toFixed(2)}</span>
+            </div>
+            <div class="summary-row highlight-change">
+                <span class="summary-label"><strong>Change:</strong></span>
+                <span class="summary-value"><strong>₱${changeAmount}</strong></span>
+            </div>
+            ` : `
+            <div class="summary-row">
+                <span class="summary-label">Amount Paid:</span>
+                <span class="summary-value text-success"><strong>₱${amountPaid.toFixed(2)}</strong></span>
+            </div>
+            `}
+        </div>
+
+        <div class="alert alert-info mt-4">
+            <i class="fas fa-info-circle"></i>
+            <strong>Next Step:</strong> Click "Print Receipt" below to print the official receipt for the driver.
+        </div>
+    `;
+
+    // Update modal content
+    document.getElementById('paymentSummaryContent').innerHTML = summaryContent;
 
     // Show modal
-    previewModal.show();
-
-    // Clear any existing timeout
-    if (receiptLoadTimeout) {
-        clearTimeout(receiptLoadTimeout);
-    }
-
-    // Set timeout for loading (10 seconds)
-    receiptLoadTimeout = setTimeout(() => {
-        if (loadingDiv.style.display !== 'none') {
-            loadingDiv.innerHTML = `
-                <div class="loading-content">
-                    <div class="text-center">
-                        <i class="fas fa-clock fa-4x mb-4" style="color: #f59e0b;"></i>
-                        <h5 class="mb-3">Preview Timeout</h5>
-                        <p class="text-muted mb-4">The receipt preview took too long to load.<br>The payment was recorded, but preview timed out.</p>
-                        <div class="d-flex gap-2 justify-content-center">
-                            <button class="btn btn-primary btn-lg" onclick="retryReceiptLoad('${receiptNumber}', ${paymentId})">
-                                <i class="fas fa-redo"></i> Try Again
-                            </button>
-                            <button class="btn btn-outline-secondary btn-lg" onclick="proceedWithoutPreview(${paymentId})">
-                                Skip Preview
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-    }, 10000);
-
-    // Load receipt in iframe - use full URL to avoid connection issues
-    const receiptUrl = window.location.origin + '/vlad/public/receipt.php?receipt=' + encodeURIComponent(receiptNumber);
-    console.log('Loading receipt:', receiptUrl); // Debug log
-    iframe.src = receiptUrl;
-
-    // When iframe loads, hide loading and show content
-    iframe.onload = function() {
-        // Clear timeout
-        if (receiptLoadTimeout) {
-            clearTimeout(receiptLoadTimeout);
-        }
-
-        // Hide loading and show content
-        // Note: We can't check iframe content due to CORS restrictions
-        // The timeout will handle actual load failures
-        loadingDiv.style.display = 'none';
-        contentDiv.style.display = 'block';
-    };
-
-    // Handle iframe errors
-    iframe.onerror = function(error) {
-        console.error('Iframe onerror:', error);
-        if (receiptLoadTimeout) {
-            clearTimeout(receiptLoadTimeout);
-        }
-        loadingDiv.innerHTML = `
-            <div class="loading-content">
-                <div class="text-center">
-                    <i class="fas fa-exclamation-circle fa-4x mb-4" style="color: #ef4444;"></i>
-                    <h5 class="mb-3">Failed to Load Receipt</h5>
-                    <p class="text-muted mb-4">Unable to load the receipt preview.<br>Please check that Apache and MySQL are running.</p>
-                    <div class="d-flex gap-2 justify-content-center">
-                        <button class="btn btn-danger btn-lg" onclick="retryReceiptLoad('${receiptNumber}', ${paymentId})">
-                            <i class="fas fa-redo"></i> Try Again
-                        </button>
-                        <button class="btn btn-outline-secondary btn-lg" onclick="proceedWithoutPreview(${paymentId})">
-                            Skip Preview
-                        </button>
-                    </div>
-                    <p class="text-muted mt-3 small">
-                        <i class="fas fa-lightbulb"></i> Tip: The payment was recorded successfully even if preview fails
-                    </p>
-                </div>
-            </div>
-        `;
-        loadingDiv.style.display = 'flex';
-    };
+    const summaryModal = new bootstrap.Modal(document.getElementById('printPreviewModal'));
+    summaryModal.show();
 }
 
 /**
- * Print receipt from preview and confirm
+ * Print receipt directly and confirm
  */
 function printReceiptFromPreview() {
-    const iframe = document.getElementById('receiptIframe');
     const paymentId = window.currentPaymentId;
     const receiptNumber = window.currentReceiptNumber;
 
-    // Print the iframe content
-    iframe.contentWindow.focus();
-    iframe.contentWindow.print();
-
-    // Close preview modal
+    // Close summary modal
     const previewModal = bootstrap.Modal.getInstance(document.getElementById('printPreviewModal'));
     previewModal.hide();
+
+    // Open receipt in new window and trigger print
+    const receiptUrl = window.location.origin + '/vlad/public/receipt.php?receipt=' + encodeURIComponent(receiptNumber);
+    const printWindow = window.open(receiptUrl, '_blank');
+
+    // Wait for window to load, then print
+    if (printWindow) {
+        printWindow.onload = function() {
+            printWindow.print();
+        };
+    }
 
     // Show print confirmation dialog after a brief moment
     setTimeout(() => {
         showPrintConfirmation(paymentId, receiptNumber);
-    }, 500);
+    }, 1000);
 }
 
 /**
@@ -724,59 +978,29 @@ function preventDataLoss(e) {
     const hasData = receiptNumber || cashReceived || referenceNumber || notes;
 
     if (formIsDirty && hasData) {
-        const confirmClose = confirm('You have entered data. Are you sure you want to close and discard it?');
-        if (!confirmClose) {
-            e.preventDefault();
-            return false;
-        }
+        e.preventDefault();
+        Swal.fire({
+            title: 'Discard Changes?',
+            text: 'You have entered data. Are you sure you want to close and discard it?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Discard',
+            cancelButtonText: 'Keep Editing',
+            confirmButtonColor: '#dc2626',
+            cancelButtonColor: '#6b7280'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                formIsDirty = false;
+                paymentModal.hide();
+            }
+        });
+        return false;
     }
 
     // Reset dirty state when closing
     formIsDirty = false;
 }
 
-/**
- * Retry loading receipt preview
- */
-function retryReceiptLoad(receiptNumber, paymentId) {
-    showReceiptPreview(receiptNumber, paymentId);
-}
-
-/**
- * Zoom receipt preview
- */
-let currentZoom = 100;
-function zoomReceipt(action) {
-    const iframe = document.getElementById('receiptIframe');
-
-    if (action === 'in') {
-        currentZoom = Math.min(currentZoom + 10, 150);
-    } else if (action === 'out') {
-        currentZoom = Math.max(currentZoom - 10, 50);
-    } else if (action === 'reset') {
-        currentZoom = 100;
-    }
-
-    iframe.style.transform = `scale(${currentZoom / 100})`;
-    iframe.style.transformOrigin = 'top center';
-    iframe.style.transition = 'transform 0.2s ease';
-}
-
-/**
- * Proceed without preview (skip directly to print confirmation)
- */
-function proceedWithoutPreview(paymentId) {
-    // Close preview modal
-    const previewModal = bootstrap.Modal.getInstance(document.getElementById('printPreviewModal'));
-    if (previewModal) {
-        previewModal.hide();
-    }
-
-    // Show print confirmation dialog immediately
-    setTimeout(() => {
-        showPrintConfirmation(paymentId, window.currentReceiptNumber);
-    }, 300);
-}
 
 /**
  * Utility functions

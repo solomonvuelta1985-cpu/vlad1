@@ -9,7 +9,8 @@
       "Bash(if not exist \"c:\\xampp\\htdocs\\vlad\\services\\payment\" mkdir \"c:\\xampp\\htdocs\\vlad\\services\\payment\")",
       "Bash(if not exist \"c:\\xampp\\htdocs\\vlad\\api\\payments\" mkdir \"c:\\xampp\\htdocs\\vlad\\api\\payments\")",
       "Bash(if not exist \"c:\\xampp\\htdocs\\vlad\\assets\\js\\payments\" mkdir \"c:\\xampp\\htdocs\\vlad\\assets\\js\\payments\")",
-      "Bash(php:*)"
+      "Bash(php:*)",
+      "Bash(mysql:*)"
     ],
     "deny": [],
     "ask": []

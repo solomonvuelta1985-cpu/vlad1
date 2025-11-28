@@ -51,101 +51,129 @@ function viewCitation(id) {
 }
 
 function displayCitationDetails(citation) {
+    const violationCards = citation.violations.map(v => `
+        <div class="violation-card">
+            <div class="violation-info">
+                <div class="violation-type">${v.violation_type}</div>
+                <div class="violation-offense">Offense #${v.offense_count}</div>
+            </div>
+            <div class="violation-fine">₱${parseFloat(v.fine_amount).toFixed(2)}</div>
+        </div>
+    `).join('');
+
     const html = `
-        <div class="section-title"><i class="fas fa-ticket-alt"></i> Citation Information</div>
-        <table class="detail-table">
-            <tr>
-                <th>Ticket Number</th>
-                <td><strong>${citation.ticket_number}</strong></td>
-            </tr>
-            <tr>
-                <th>Date/Time</th>
-                <td>${new Date(citation.apprehension_datetime).toLocaleString()}</td>
-            </tr>
-            <tr>
-                <th>Place of Apprehension</th>
-                <td>${citation.place_of_apprehension}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td><span class="badge badge-${citation.status}">${citation.status.toUpperCase()}</span></td>
-            </tr>
-        </table>
+        <div class="modal-two-column">
+            <!-- Left Column -->
+            <div class="modal-column-left">
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <i class="fas fa-ticket-alt"></i>
+                        <h6 class="detail-card-title">Citation Information</h6>
+                    </div>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Ticket Number</span>
+                            <span class="detail-value"><strong>${citation.ticket_number}</strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value"><span class="badge badge-${citation.status}">${citation.status.toUpperCase()}</span></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Date/Time</span>
+                            <span class="detail-value">${new Date(citation.apprehension_datetime).toLocaleString()}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Place of Apprehension</span>
+                            <span class="detail-value">${citation.place_of_apprehension}</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="section-title"><i class="fas fa-user"></i> Driver Information</div>
-        <table class="detail-table">
-            <tr>
-                <th>Full Name</th>
-                <td>${citation.last_name}, ${citation.first_name} ${citation.middle_initial || ''} ${citation.suffix || ''}</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>${citation.age || 'N/A'}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>${citation.zone ? 'Zone ' + citation.zone + ', ' : ''}${citation.barangay}, ${citation.municipality}, ${citation.province}</td>
-            </tr>
-            <tr>
-                <th>License Number</th>
-                <td>${citation.license_number || 'N/A'}</td>
-            </tr>
-            <tr>
-                <th>License Type</th>
-                <td>${citation.license_type || 'N/A'}</td>
-            </tr>
-        </table>
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <i class="fas fa-user"></i>
+                        <h6 class="detail-card-title">Driver Information</h6>
+                    </div>
+                    <div class="detail-grid">
+                        <div class="detail-item" style="grid-column: 1 / -1;">
+                            <span class="detail-label">Full Name</span>
+                            <span class="detail-value"><strong>${citation.last_name}, ${citation.first_name} ${citation.middle_initial || ''} ${citation.suffix || ''}</strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Age</span>
+                            <span class="detail-value">${citation.age || 'N/A'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">License Number</span>
+                            <span class="detail-value">${citation.license_number || 'N/A'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">License Type</span>
+                            <span class="detail-value">${citation.license_type || 'N/A'}</span>
+                        </div>
+                        <div class="detail-item" style="grid-column: 1 / -1;">
+                            <span class="detail-label">Address</span>
+                            <span class="detail-value">${citation.zone ? 'Zone ' + citation.zone + ', ' : ''}${citation.barangay}, ${citation.municipality}, ${citation.province}</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="section-title"><i class="fas fa-car"></i> Vehicle Information</div>
-        <table class="detail-table">
-            <tr>
-                <th>Plate/MV/Engine/Chassis No.</th>
-                <td>${citation.plate_mv_engine_chassis_no}</td>
-            </tr>
-            <tr>
-                <th>Vehicle Type</th>
-                <td>${citation.vehicle_type || 'N/A'}</td>
-            </tr>
-            <tr>
-                <th>Vehicle Description</th>
-                <td>${citation.vehicle_description || 'N/A'}</td>
-            </tr>
-        </table>
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <i class="fas fa-car"></i>
+                        <h6 class="detail-card-title">Vehicle Information</h6>
+                    </div>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Plate/MV/Engine/Chassis No.</span>
+                            <span class="detail-value"><strong>${citation.plate_mv_engine_chassis_no}</strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Vehicle Type</span>
+                            <span class="detail-value">${citation.vehicle_type || 'N/A'}</span>
+                        </div>
+                        <div class="detail-item" style="grid-column: 1 / -1;">
+                            <span class="detail-label">Vehicle Description</span>
+                            <span class="detail-value">${citation.vehicle_description || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="section-title"><i class="fas fa-exclamation-triangle"></i> Violations</div>
-        <table class="detail-table">
-            <thead>
-                <tr>
-                    <th>Violation Type</th>
-                    <th>Offense #</th>
-                    <th>Fine Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${citation.violations.map(v => `
-                    <tr>
-                        <td>${v.violation_type}</td>
-                        <td>${v.offense_count}</td>
-                        <td>P${parseFloat(v.fine_amount).toFixed(2)}</td>
-                    </tr>
-                `).join('')}
-                <tr>
-                    <th colspan="2" class="text-end">Total Fine:</th>
-                    <td><strong>P${parseFloat(citation.total_fine).toFixed(2)}</strong></td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="detail-table mt-2">
-            <tr>
-                <th>Apprehension Officer</th>
-                <td>${citation.apprehension_officer || 'N/A'}</td>
-            </tr>
-        </table>
+            <!-- Right Column -->
+            <div class="modal-column-right">
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h6 class="detail-card-title">Violations (${citation.violations.length})</h6>
+                    </div>
+                    ${violationCards}
+                    <div class="total-fine-display">
+                        <span class="total-fine-label">Total Fine</span>
+                        <span class="total-fine-amount">₱${parseFloat(citation.total_fine).toFixed(2)}</span>
+                    </div>
+                </div>
 
-        ${citation.remarks ? `
-            <div class="section-title"><i class="fas fa-comment"></i> Remarks</div>
-            <div class="remarks-box">${citation.remarks}</div>
-        ` : ''}
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <i class="fas fa-user-shield"></i>
+                        <h6 class="detail-card-title">Apprehension Officer</h6>
+                    </div>
+                    <div class="detail-value">${citation.apprehension_officer || 'N/A'}</div>
+                </div>
+
+                ${citation.remarks ? `
+                    <div class="detail-card">
+                        <div class="detail-card-header">
+                            <i class="fas fa-comment"></i>
+                            <h6 class="detail-card-title">Remarks</h6>
+                        </div>
+                        <div class="remarks-box">${citation.remarks}</div>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
     `;
 
     document.getElementById('viewModalContent').innerHTML = html;
@@ -204,7 +232,6 @@ function openStatusModal(newStatus) {
     }
 
     const statusMessages = {
-        'paid': 'You are about to mark this citation as <strong>PAID</strong>. This indicates the violator has settled the fine.',
         'contested': 'You are about to mark this citation as <strong>CONTESTED</strong>. This indicates the violator is disputing the citation.',
         'dismissed': 'You are about to <strong>DISMISS</strong> this citation. This removes the violation without payment.',
         'void': 'You are about to <strong>VOID</strong> this citation. This permanently invalidates the citation.',
@@ -221,8 +248,6 @@ function openStatusModal(newStatus) {
     alertBox.className = 'alert';
     if (newStatus === 'void' || newStatus === 'dismissed') {
         alertBox.classList.add('alert-warning');
-    } else if (newStatus === 'paid') {
-        alertBox.classList.add('alert-success');
     } else {
         alertBox.classList.add('alert-info');
     }
@@ -270,58 +295,59 @@ function quickInfo(id) {
 }
 
 function displayQuickInfo(citation) {
-    const violationsList = citation.violations.map(v =>
-        `<li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>${v.violation_type}</span>
-            <span class="badge bg-danger">P${parseFloat(v.fine_amount).toFixed(2)}</span>
-        </li>`
-    ).join('');
+    const violationCards = citation.violations.map(v => `
+        <div class="violation-card" style="margin-bottom: 8px;">
+            <div class="violation-info">
+                <div class="violation-type" style="font-size: 0.9rem;">${v.violation_type}</div>
+                <div class="violation-offense" style="font-size: 0.75rem;">Offense #${v.offense_count}</div>
+            </div>
+            <div class="violation-fine" style="font-size: 1rem;">₱${parseFloat(v.fine_amount).toFixed(2)}</div>
+        </div>
+    `).join('');
 
     const html = `
-        <div class="mb-3">
+        <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <h6 class="mb-0"><i class="fas fa-user"></i> ${citation.last_name}, ${citation.first_name} ${citation.middle_initial || ''}</h6>
+                <h6 class="mb-0" style="color: #0f172a; font-weight: 600;">
+                    <i class="fas fa-user" style="color: #3b82f6;"></i>
+                    ${citation.last_name}, ${citation.first_name} ${citation.middle_initial || ''}
+                </h6>
                 <span class="badge badge-${citation.status}">${citation.status.toUpperCase()}</span>
             </div>
-            <small class="text-muted">
-                <i class="fas fa-ticket-alt"></i> Ticket: <strong>${citation.ticket_number}</strong>
-            </small>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-6">
-                <small class="text-muted d-block">Age</small>
-                <strong>${citation.age || 'N/A'}</strong>
-            </div>
-            <div class="col-6">
-                <small class="text-muted d-block">License #</small>
-                <strong>${citation.license_number || 'N/A'}</strong>
+            <div style="font-size: 0.85rem; color: #6b7280;">
+                <i class="fas fa-ticket-alt"></i> Ticket: <strong style="color: #0f172a;">${citation.ticket_number}</strong>
             </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col-6">
-                <small class="text-muted d-block">Vehicle</small>
-                <strong>${citation.plate_mv_engine_chassis_no}</strong>
+        <div class="detail-grid" style="margin-bottom: 16px;">
+            <div class="detail-item">
+                <span class="detail-label">Age</span>
+                <span class="detail-value">${citation.age || 'N/A'}</span>
             </div>
-            <div class="col-6">
-                <small class="text-muted d-block">Date</small>
-                <strong>${new Date(citation.apprehension_datetime).toLocaleDateString()}</strong>
+            <div class="detail-item">
+                <span class="detail-label">License #</span>
+                <span class="detail-value">${citation.license_number || 'N/A'}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Vehicle</span>
+                <span class="detail-value">${citation.plate_mv_engine_chassis_no}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Date</span>
+                <span class="detail-value">${new Date(citation.apprehension_datetime).toLocaleDateString()}</span>
             </div>
         </div>
 
-        <div class="mb-3">
-            <small class="text-muted d-block mb-1"><i class="fas fa-exclamation-triangle"></i> Violations (${citation.violations.length})</small>
-            <ul class="list-group list-group-flush">
-                ${violationsList}
-            </ul>
+        <div style="margin-bottom: 16px;">
+            <div style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px; font-weight: 600;">
+                <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i> Violations (${citation.violations.length})
+            </div>
+            ${violationCards}
         </div>
 
-        <div class="alert alert-warning mb-0 py-2">
-            <div class="d-flex justify-content-between align-items-center">
-                <strong>Total Fine:</strong>
-                <span class="fs-5 fw-bold">P${parseFloat(citation.total_fine).toFixed(2)}</span>
-            </div>
+        <div class="total-fine-display" style="margin-bottom: 0;">
+            <span class="total-fine-label">Total Fine</span>
+            <span class="total-fine-amount">₱${parseFloat(citation.total_fine).toFixed(2)}</span>
         </div>
     `;
 

@@ -406,45 +406,66 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-            alert(data.message);
             if (data.status === 'success') {
-                document.getElementById('citationForm').reset();
-                municipalityDiv.querySelector('input').value = 'Baggao';
-                provinceDiv.querySelector('input').value = 'Cagayan';
-                // Hide "Others" inputs
-                otherViolationInput.style.cssText = 'display: none !important; margin-top: 8px;';
-                otherVehicleInput.style.cssText = 'display: none !important; margin-top: 8px;';
-                otherBarangayInput.style.cssText = 'display: none !important; margin-top: 8px;';
-                otherViolationInput.required = false;
-                otherVehicleInput.required = false;
-                otherBarangayInput.required = false;
-                otherViolationInput.value = '';
-                otherVehicleInput.value = '';
-                otherBarangayInput.value = '';
-                hasLicenseCheckbox.checked = false;
-                licenseFields.forEach(field => {
-                    field.style.display = 'none';
-                    field.querySelectorAll('input').forEach(input => {
-                        input.value = '';
-                        if (input.type === 'radio') input.checked = false;
-                        input.required = false;
+                Swal.fire({
+                    title: 'Success!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonColor: '#28a745',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    document.getElementById('citationForm').reset();
+                    municipalityDiv.querySelector('input').value = 'Baggao';
+                    provinceDiv.querySelector('input').value = 'Cagayan';
+                    // Hide "Others" inputs
+                    otherViolationInput.style.cssText = 'display: none !important; margin-top: 8px;';
+                    otherVehicleInput.style.cssText = 'display: none !important; margin-top: 8px;';
+                    otherBarangayInput.style.cssText = 'display: none !important; margin-top: 8px;';
+                    otherViolationInput.required = false;
+                    otherVehicleInput.required = false;
+                    otherBarangayInput.required = false;
+                    otherViolationInput.value = '';
+                    otherVehicleInput.value = '';
+                    otherBarangayInput.value = '';
+                    hasLicenseCheckbox.checked = false;
+                    licenseFields.forEach(field => {
+                        field.style.display = 'none';
+                        field.querySelectorAll('input').forEach(input => {
+                            input.value = '';
+                            if (input.type === 'radio') input.checked = false;
+                            input.required = false;
+                        });
                     });
+                    isAutoFilled = false;
+                    toggleBtn.innerHTML = '<i class="fas fa-calendar-alt"></i>';
+                    toggleBtn.classList.remove('btn-outline-danger');
+                    toggleBtn.classList.add('btn-outline-secondary');
+                    // Reset age field
+                    ageField.value = '';
+                    if (data.new_csrf_token) {
+                        csrfTokenInput.value = data.new_csrf_token;
+                    }
+                    window.location.reload();
                 });
-                isAutoFilled = false;
-                toggleBtn.innerHTML = '<i class="fas fa-calendar-alt"></i>';
-                toggleBtn.classList.remove('btn-outline-danger');
-                toggleBtn.classList.add('btn-outline-secondary');
-                // Reset age field
-                ageField.value = '';
-                if (data.new_csrf_token) {
-                    csrfTokenInput.value = data.new_csrf_token;
-                }
-                window.location.reload();
+            } else {
+                Swal.fire({
+                    title: 'Failed!',
+                    text: data.message || 'An error occurred while saving the citation.',
+                    icon: 'error',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                });
             }
         })
         .catch(error => {
             console.error('Fetch Error:', error);
-            alert('Error submitting form: ' + error.message);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error submitting form: ' + error.message,
+                icon: 'error',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            });
         });
     });
 

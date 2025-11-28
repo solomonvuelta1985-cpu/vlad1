@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2025 at 09:40 AM
+-- Generation Time: Nov 28, 2025 at 09:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -74,7 +74,23 @@ INSERT INTO `audit_log` (`audit_id`, `user_id`, `action`, `table_name`, `record_
 (17, 1, 'voided', 'payments', 16, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 15:26:08'),
 (18, 1, 'voided', 'payments', 17, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 15:28:00'),
 (19, 1, 'status_change', 'citations', 26, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: HJHU6878788987\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 16:31:20'),
-(20, 1, 'status_change', 'citations', 27, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: HJHU6878788988\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 16:33:43');
+(20, 1, 'status_change', 'citations', 27, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: HJHU6878788988\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 16:33:43'),
+(21, 1, 'status_change', 'citations', 30, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: CF7676767\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-26 16:42:46'),
+(22, 1, 'voided', 'payments', 21, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 09:29:51'),
+(23, 1, 'voided', 'payments', 20, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 09:29:54'),
+(24, 1, 'status_change', 'citations', 33, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ABCF456577\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 09:49:24'),
+(25, 1, 'status_change', 'citations', 29, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ASFG878787\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 10:02:36'),
+(26, 1, 'status_change', 'citations', 24, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ASFG878789\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 10:02:54'),
+(27, 1, 'status_change', 'citations', 28, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ASFG8787912\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 10:03:10'),
+(28, 1, 'status_change', 'citations', 25, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ASFG8787919\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 10:03:40'),
+(29, 1, 'status_change', 'citations', 31, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: CF7676768\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 10:12:22'),
+(30, 1, 'status_change', 'citations', 32, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: CF7676798\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 10:12:22'),
+(31, 1, 'status_change', 'citations', 35, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ABCF456554\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 11:08:04'),
+(32, 1, 'status_change', 'citations', 34, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: SDSD4545454\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 11:08:30'),
+(33, 1, 'voided', 'payments', 34, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment cancelled by cashier - printer issue\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 12:47:16'),
+(34, 1, 'voided', 'payments', 33, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 12:47:27'),
+(35, 1, 'voided', 'payments', 32, '{\"status\":\"pending_print\"}', '{\"status\":\"voided\",\"reason\":\"Payment voided by admin - was stuck in pending_print status\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 12:47:30'),
+(36, 1, 'status_change', 'citations', 39, '{\"status\":\"pending\"}', '{\"status\":\"paid\",\"reason\":\"Payment confirmed and receipt printed successfully - Receipt: ABCF4564535\"}', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-28 15:34:07');
 
 -- --------------------------------------------------------
 
@@ -120,12 +136,25 @@ INSERT INTO `citations` (`citation_id`, `ticket_number`, `driver_id`, `last_name
 (21, '06101', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 13:41:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 13:42:28', 500.00, '2025-11-26 13:41:45', '2025-11-26 13:42:28', NULL),
 (22, '06102', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 13:51:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 15:14:22', 500.00, '2025-11-26 13:51:55', '2025-11-26 15:14:22', NULL),
 (23, '06103', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:14:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 15:15:27', 500.00, '2025-11-26 15:14:50', '2025-11-26 15:15:27', NULL),
-(24, '06104', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Annayatan', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:20:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-26 15:20:48', '2025-11-26 15:20:48', NULL),
-(25, '06105', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Bagunot', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:26:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-26 15:26:51', '2025-11-26 15:26:51', NULL),
+(24, '06104', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Annayatan', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:20:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 10:02:54', 500.00, '2025-11-26 15:20:48', '2025-11-28 10:02:54', NULL),
+(25, '06105', 6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Bagunot', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 15:26:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 10:03:40', 500.00, '2025-11-26 15:26:51', '2025-11-28 10:03:40', NULL),
 (26, '06106', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:26:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 16:31:20', 1000.00, '2025-11-26 16:26:31', '2025-11-26 16:31:20', NULL),
 (27, '06107', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bitag Grande', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:31:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 16:33:43', 1000.00, '2025-11-26 16:31:38', '2025-11-26 16:33:43', NULL),
-(28, '06108', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:33:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-26 16:34:10', '2025-11-26 16:34:10', NULL),
-(29, '06109', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:37:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-26 16:37:16', '2025-11-26 16:37:16', NULL);
+(28, '06108', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:33:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 10:03:10', 500.00, '2025-11-26 16:34:10', '2025-11-28 10:03:10', NULL),
+(29, '06109', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:37:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 10:02:36', 1000.00, '2025-11-26 16:37:16', '2025-11-28 10:02:36', NULL),
+(30, '06110', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', '0201-375982', 'nonProf', '5JK567', 'RIDER 150', '2025-11-26 16:41:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-26 16:42:46', 500.00, '2025-11-26 16:41:44', '2025-11-26 16:42:46', NULL),
+(31, '06111', 7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 09:30:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 10:12:22', 1000.00, '2025-11-28 09:30:52', '2025-11-28 10:12:22', NULL),
+(32, '06112', 6, 'rosete', 'richmond', 'R', NULL, NULL, NULL, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 09:46:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 10:12:22', 500.00, '2025-11-28 09:46:33', '2025-11-28 10:12:22', NULL),
+(33, '06113', 8, 'rosete', 'richmond', 'R', '', '2025-11-28', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', '', '', '5JK567', 'RIDER 150', '2025-11-28 09:48:00', 'SAN JOSE', 'PNP TALLANG', '', 'contested', '2025-11-28 09:49:24', 700.00, '2025-11-28 09:48:29', '2025-11-28 10:30:25', NULL),
+(34, '06114', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 10:31:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 11:08:30', 1000.00, '2025-11-28 10:31:54', '2025-11-28 11:08:30', NULL),
+(35, '06115', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 10:55:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 11:08:04', 1000.00, '2025-11-28 10:56:09', '2025-11-28 11:08:04', NULL),
+(36, '06116', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 11:09:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-28 11:09:24', '2025-11-28 11:09:24', NULL),
+(37, '06117', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Adag', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 11:57:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 650.00, '2025-11-28 11:57:59', '2025-11-28 11:57:59', NULL),
+(38, '06118', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 11:59:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-28 11:59:53', '2025-11-28 11:59:53', NULL),
+(39, '06119', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 15:30:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'paid', '2025-11-28 15:34:07', 1000.00, '2025-11-28 15:30:53', '2025-11-28 15:34:07', NULL),
+(40, '06120', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Barsat West', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 15:34:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-28 15:34:35', '2025-11-28 15:34:35', NULL),
+(41, '06121', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Agaman Norte', 'Baggao', 'Cagayan', NULL, 'nonProf', '5JK567', 'RIDER 150', '2025-11-28 15:37:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 1000.00, '2025-11-28 15:37:46', '2025-11-28 15:37:46', NULL),
+(42, '06122', 8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, NULL, '5JK567', 'RIDER 150', '2025-11-28 15:38:00', 'SAN JOSE', 'PNP TALLANG', NULL, 'pending', NULL, 500.00, '2025-11-28 15:38:41', '2025-11-28 15:38:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,7 +182,20 @@ INSERT INTO `citation_vehicles` (`vehicle_id`, `citation_id`, `vehicle_type`, `c
 (34, 26, 'Motorcycle', '2025-11-26 16:26:31'),
 (35, 27, 'Motorcycle', '2025-11-26 16:31:38'),
 (36, 28, 'Motorcycle', '2025-11-26 16:34:10'),
-(37, 29, 'Motorcycle', '2025-11-26 16:37:16');
+(37, 29, 'Motorcycle', '2025-11-26 16:37:16'),
+(38, 30, 'Motorcycle', '2025-11-26 16:41:44'),
+(39, 31, 'Motorcycle', '2025-11-28 09:30:52'),
+(40, 32, 'Motorcycle', '2025-11-28 09:46:33'),
+(42, 33, 'Motorcycle', '2025-11-28 10:30:25'),
+(43, 34, 'Motorcycle', '2025-11-28 10:31:54'),
+(44, 35, 'Motorcycle', '2025-11-28 10:56:09'),
+(45, 36, 'Motorcycle', '2025-11-28 11:09:24'),
+(46, 37, 'Motorcycle', '2025-11-28 11:57:59'),
+(47, 38, 'Motorcycle', '2025-11-28 11:59:53'),
+(48, 39, 'Motorcycle', '2025-11-28 15:30:53'),
+(49, 40, 'Motorcycle', '2025-11-28 15:34:35'),
+(50, 41, 'Motorcycle', '2025-11-28 15:37:46'),
+(51, 42, 'Motorcycle', '2025-11-28 15:38:41');
 
 -- --------------------------------------------------------
 
@@ -184,8 +226,9 @@ CREATE TABLE `drivers` (
 --
 
 INSERT INTO `drivers` (`driver_id`, `last_name`, `first_name`, `middle_initial`, `suffix`, `date_of_birth`, `age`, `zone`, `barangay`, `municipality`, `province`, `license_number`, `license_type`, `created_at`, `updated_at`) VALUES
-(6, 'rosete', 'richmond', 'R', NULL, '1999-10-17', 26, '1', 'Bagunot', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-26 13:41:45', '2025-11-26 15:26:51'),
-(7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-26 16:26:31', '2025-11-26 16:37:16');
+(6, 'rosete', 'richmond', 'R', NULL, NULL, NULL, '1', 'Agaman', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-26 13:41:45', '2025-11-28 09:46:33'),
+(7, 'rosete', 'richmond', 'R', NULL, '2025-11-26', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, 'nonProf', '2025-11-26 16:26:31', '2025-11-28 09:30:52'),
+(8, 'rosete', 'richmond', 'R', NULL, '2025-11-28', NULL, '1', 'Bungel', 'Baggao', 'Cagayan', NULL, NULL, '2025-11-28 09:48:29', '2025-11-28 15:38:41');
 
 -- --------------------------------------------------------
 
@@ -223,8 +266,24 @@ INSERT INTO `payments` (`payment_id`, `citation_id`, `amount_paid`, `payment_met
 (17, 25, 500.00, 'cash', '2025-11-26 08:27:06', NULL, '65896856', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-26 15:27:06', '2025-11-26 15:28:00'),
 (18, 26, 1000.00, 'cash', '2025-11-26 09:26:54', NULL, 'HJHU6878788987', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 16:26:54', '2025-11-26 16:31:20'),
 (19, 27, 1000.00, 'cash', '2025-11-26 09:31:50', NULL, 'HJHU6878788988', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 16:31:50', '2025-11-26 16:33:43'),
-(20, 28, 500.00, 'cash', '2025-11-26 09:34:28', NULL, 'HJHU6878788985', 1, NULL, NULL, NULL, '', 'pending_print', '2025-11-26 16:34:28', '2025-11-26 16:34:28'),
-(21, 29, 1000.00, 'cash', '2025-11-26 09:38:39', NULL, 'GHGJ345679', 1, NULL, NULL, NULL, '', 'pending_print', '2025-11-26 16:38:39', '2025-11-26 16:38:39');
+(20, 28, 500.00, 'cash', '2025-11-26 09:34:28', NULL, 'HJHU6878788985', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-26 16:34:28', '2025-11-28 09:29:54'),
+(21, 29, 1000.00, 'cash', '2025-11-26 09:38:39', NULL, 'GHGJ345679', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-26 16:38:39', '2025-11-28 09:29:51'),
+(22, 30, 500.00, 'cash', '2025-11-26 09:42:31', NULL, 'CF7676767', 1, NULL, NULL, NULL, '', 'completed', '2025-11-26 16:42:31', '2025-11-26 16:42:46'),
+(23, 31, 1000.00, 'cash', '2025-11-28 02:37:06', NULL, 'CF7676768', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 09:37:06', '2025-11-28 10:12:22'),
+(24, 32, 500.00, 'cash', '2025-11-28 02:47:45', NULL, 'CF7676798', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 09:47:45', '2025-11-28 10:12:22'),
+(25, 33, 700.00, 'cash', '2025-11-28 02:49:01', NULL, 'ABCF456577', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 09:49:01', '2025-11-28 09:49:24'),
+(26, 29, 1000.00, 'cash', '2025-11-28 03:02:25', NULL, 'ASFG878787', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 10:02:25', '2025-11-28 10:02:36'),
+(27, 24, 500.00, 'cash', '2025-11-28 03:02:48', NULL, 'ASFG878789', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 10:02:48', '2025-11-28 10:02:54'),
+(28, 28, 500.00, 'cash', '2025-11-28 03:03:06', NULL, 'ASFG8787912', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 10:03:06', '2025-11-28 10:03:10'),
+(29, 25, 500.00, 'cash', '2025-11-28 03:03:33', NULL, 'ASFG8787919', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 10:03:33', '2025-11-28 10:03:40'),
+(30, 34, 1000.00, 'cash', '2025-11-28 03:54:17', NULL, 'SDSD4545454', 2, NULL, NULL, NULL, '', 'completed', '2025-11-28 10:54:17', '2025-11-28 11:08:30'),
+(31, 35, 1000.00, 'cash', '2025-11-28 04:07:45', NULL, 'ABCF456554', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 11:07:45', '2025-11-28 11:08:04'),
+(32, 36, 1000.00, 'cash', '2025-11-28 04:55:01', NULL, 'ABCF4565789', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-28 11:55:01', '2025-11-28 12:47:30'),
+(33, 37, 650.00, 'cash', '2025-11-28 04:58:30', NULL, 'ABCF4565455', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment voided by admin - was stuck in pending_print status', 'voided', '2025-11-28 11:58:30', '2025-11-28 12:47:27'),
+(34, 38, 1000.00, 'cash', '2025-11-28 05:00:12', NULL, 'ABCF4565498998', 1, NULL, NULL, NULL, '\n[VOIDED] Reason: Payment cancelled by cashier - printer issue', 'voided', '2025-11-28 12:00:12', '2025-11-28 12:47:16'),
+(35, 39, 1000.00, 'cash', '2025-11-28 08:31:38', NULL, 'ABCF4564535', 1, NULL, NULL, NULL, '', 'completed', '2025-11-28 15:31:38', '2025-11-28 15:34:07'),
+(36, 42, 500.00, 'cash', '2025-11-28 08:39:17', NULL, 'ASFF459865', 1, NULL, NULL, NULL, '', 'pending_print', '2025-11-28 15:39:17', '2025-11-28 15:39:17'),
+(37, 41, 1000.00, 'cash', '2025-11-28 08:45:10', NULL, 'ASFF45986556', 1, NULL, NULL, NULL, '', 'pending_print', '2025-11-28 15:45:10', '2025-11-28 15:45:10');
 
 -- --------------------------------------------------------
 
@@ -279,8 +338,24 @@ INSERT INTO `receipts` (`receipt_id`, `payment_id`, `receipt_number`, `generated
 (17, 17, '65896856', '2025-11-26 15:27:06', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-26 15:28:00'),
 (18, 18, 'HJHU6878788987', '2025-11-26 16:26:54', 1, '2025-11-26 16:31:20', 1, 1, '2025-11-26 16:31:20', 'active', NULL, NULL, NULL),
 (19, 19, 'HJHU6878788988', '2025-11-26 16:31:50', 1, '2025-11-26 16:33:43', 1, 1, '2025-11-26 16:33:43', 'active', NULL, NULL, NULL),
-(20, 20, 'HJHU6878788985', '2025-11-26 16:34:28', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL),
-(21, 21, 'GHGJ345679', '2025-11-26 16:38:39', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL);
+(20, 20, 'HJHU6878788985', '2025-11-26 16:34:28', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-28 09:29:54'),
+(21, 21, 'GHGJ345679', '2025-11-26 16:38:39', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-28 09:29:51'),
+(22, 22, 'CF7676767', '2025-11-26 16:42:31', 1, '2025-11-26 16:42:46', 1, 1, '2025-11-26 16:42:46', 'active', NULL, NULL, NULL),
+(23, 23, 'CF7676768', '2025-11-28 09:37:06', 1, '2025-11-28 10:12:22', 1, 1, '2025-11-28 10:12:22', 'active', NULL, NULL, NULL),
+(24, 24, 'CF7676798', '2025-11-28 09:47:45', 1, '2025-11-28 10:12:22', 1, 1, '2025-11-28 10:12:22', 'active', NULL, NULL, NULL),
+(25, 25, 'ABCF456577', '2025-11-28 09:49:01', 1, '2025-11-28 09:49:24', 1, 1, '2025-11-28 09:49:24', 'active', NULL, NULL, NULL),
+(26, 26, 'ASFG878787', '2025-11-28 10:02:25', 1, '2025-11-28 10:02:36', 1, 1, '2025-11-28 10:02:36', 'active', NULL, NULL, NULL),
+(27, 27, 'ASFG878789', '2025-11-28 10:02:48', 1, '2025-11-28 10:02:54', 1, 1, '2025-11-28 10:02:54', 'active', NULL, NULL, NULL),
+(28, 28, 'ASFG8787912', '2025-11-28 10:03:06', 1, '2025-11-28 10:03:10', 1, 1, '2025-11-28 10:03:10', 'active', NULL, NULL, NULL),
+(29, 29, 'ASFG8787919', '2025-11-28 10:03:33', 1, '2025-11-28 10:03:40', 3, 1, '2025-11-28 10:20:45', 'active', NULL, NULL, NULL),
+(30, 30, 'SDSD4545454', '2025-11-28 10:54:17', 2, '2025-11-28 11:08:30', 1, 1, '2025-11-28 11:08:30', 'active', NULL, NULL, NULL),
+(31, 31, 'ABCF456554', '2025-11-28 11:07:45', 1, '2025-11-28 11:08:04', 1, 1, '2025-11-28 11:08:04', 'active', NULL, NULL, NULL),
+(32, 32, 'ABCF4565789', '2025-11-28 11:55:01', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-28 12:47:30'),
+(33, 33, 'ABCF4565455', '2025-11-28 11:58:30', 1, NULL, 0, NULL, NULL, 'void', 'Payment voided by admin - was stuck in pending_print status', 1, '2025-11-28 12:47:27'),
+(34, 34, 'ABCF4565498998', '2025-11-28 12:00:12', 1, NULL, 0, NULL, NULL, 'void', 'Payment cancelled by cashier - printer issue', 1, '2025-11-28 12:47:16'),
+(35, 35, 'ABCF4564535', '2025-11-28 15:31:38', 1, '2025-11-28 15:34:07', 1, 1, '2025-11-28 15:34:07', 'active', NULL, NULL, NULL),
+(36, 36, 'ASFF459865', '2025-11-28 15:39:17', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL),
+(37, 37, 'ASFF45986556', '2025-11-28 15:45:10', 1, NULL, 0, NULL, NULL, 'active', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,8 +402,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password_hash`, `full_name`, `email`, `role`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`) VALUES
-(1, 'admin', '$2y$10$mmjBnDB0cU4krnO/uPuwF.Qs8Cja0Md.lHAcf2pGqFx3K0k/4nz8.', 'System Administrator', 'admin@traffic.gov', 'admin', 'active', '2025-11-26 16:24:50', '2025-11-17 13:23:47', '2025-11-26 16:24:50', NULL),
-(2, 'rich', '$2y$10$t4YFwv7NpVvZcH7jlFNI5uYble6KlFP2Wx8vBw3wq7YcKMVe0q7Rq', 'richmond', 'richmondrosete19@gmail.com', 'cashier', 'active', '2025-11-25 16:30:09', '2025-11-25 14:12:51', '2025-11-25 16:30:09', NULL);
+(1, 'admin', '$2y$10$mmjBnDB0cU4krnO/uPuwF.Qs8Cja0Md.lHAcf2pGqFx3K0k/4nz8.', 'System Administrator', 'admin@traffic.gov', 'admin', 'active', '2025-11-28 15:26:00', '2025-11-17 13:23:47', '2025-11-28 15:26:00', NULL),
+(2, 'rich', '$2y$10$t4YFwv7NpVvZcH7jlFNI5uYble6KlFP2Wx8vBw3wq7YcKMVe0q7Rq', 'richmond', 'richmondrosete19@gmail.com', 'cashier', 'active', '2025-11-28 10:51:20', '2025-11-25 14:12:51', '2025-11-28 10:51:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -361,7 +436,30 @@ INSERT INTO `violations` (`violation_id`, `citation_id`, `violation_type_id`, `o
 (42, 27, 28, 2, 500.00, '2025-11-26 16:31:38'),
 (43, 28, 28, 3, 500.00, '2025-11-26 16:34:10'),
 (44, 29, 29, 3, 500.00, '2025-11-26 16:37:16'),
-(45, 29, 28, 3, 500.00, '2025-11-26 16:37:16');
+(45, 29, 28, 3, 500.00, '2025-11-26 16:37:16'),
+(46, 30, 28, 3, 500.00, '2025-11-26 16:41:44'),
+(47, 31, 29, 3, 500.00, '2025-11-28 09:30:52'),
+(48, 31, 28, 3, 500.00, '2025-11-28 09:30:52'),
+(49, 32, 29, 3, 500.00, '2025-11-28 09:46:33'),
+(52, 33, 27, 1, 200.00, '2025-11-28 10:30:25'),
+(53, 33, 28, 1, 500.00, '2025-11-28 10:30:25'),
+(54, 34, 29, 1, 500.00, '2025-11-28 10:31:54'),
+(55, 34, 28, 2, 500.00, '2025-11-28 10:31:54'),
+(56, 35, 29, 2, 500.00, '2025-11-28 10:56:09'),
+(57, 35, 28, 3, 500.00, '2025-11-28 10:56:09'),
+(58, 36, 29, 3, 500.00, '2025-11-28 11:09:24'),
+(59, 36, 28, 3, 500.00, '2025-11-28 11:09:24'),
+(60, 37, 3, 1, 150.00, '2025-11-28 11:57:59'),
+(61, 37, 28, 3, 500.00, '2025-11-28 11:57:59'),
+(62, 38, 29, 3, 500.00, '2025-11-28 11:59:53'),
+(63, 38, 28, 3, 500.00, '2025-11-28 11:59:53'),
+(64, 39, 29, 3, 500.00, '2025-11-28 15:30:53'),
+(65, 39, 28, 3, 500.00, '2025-11-28 15:30:53'),
+(66, 40, 29, 3, 500.00, '2025-11-28 15:34:35'),
+(67, 40, 28, 3, 500.00, '2025-11-28 15:34:35'),
+(68, 41, 29, 3, 500.00, '2025-11-28 15:37:46'),
+(69, 41, 28, 3, 500.00, '2025-11-28 15:37:46'),
+(70, 42, 28, 3, 500.00, '2025-11-28 15:38:41');
 
 --
 -- Triggers `violations`
@@ -530,7 +628,11 @@ ALTER TABLE `citations`
   ADD KEY `idx_datetime` (`apprehension_datetime`),
   ADD KEY `idx_status` (`status`),
   ADD KEY `idx_created` (`created_at`),
-  ADD KEY `idx_date_status` (`apprehension_datetime`,`status`);
+  ADD KEY `idx_date_status` (`apprehension_datetime`,`status`),
+  ADD KEY `idx_status_date` (`status`,`apprehension_datetime`),
+  ADD KEY `idx_driver_names` (`last_name`,`first_name`),
+  ADD KEY `idx_plate` (`plate_mv_engine_chassis_no`),
+  ADD KEY `idx_fine` (`total_fine`);
 
 --
 -- Indexes for table `citation_vehicles`
@@ -560,7 +662,8 @@ ALTER TABLE `payments`
   ADD KEY `idx_receipt_number` (`receipt_number`),
   ADD KEY `idx_collected_by` (`collected_by`),
   ADD KEY `idx_status` (`status`),
-  ADD KEY `idx_payment_method` (`payment_method`);
+  ADD KEY `idx_payment_method` (`payment_method`),
+  ADD KEY `idx_citation_payment_status` (`citation_id`,`status`);
 
 --
 -- Indexes for table `payment_audit`
@@ -636,31 +739,31 @@ ALTER TABLE `apprehending_officers`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `citations`
 --
 ALTER TABLE `citations`
-  MODIFY `citation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `citation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `citation_vehicles`
 --
 ALTER TABLE `citation_vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `payment_audit`
@@ -672,7 +775,7 @@ ALTER TABLE `payment_audit`
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -684,7 +787,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `violations`
 --
 ALTER TABLE `violations`
-  MODIFY `violation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `violation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `violation_types`

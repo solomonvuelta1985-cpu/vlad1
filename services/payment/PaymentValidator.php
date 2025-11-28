@@ -83,12 +83,12 @@ class PaymentValidator {
             ];
         }
 
-        // Additional check: If citation is 'pending' but was previously 'paid',
-        // verify all previous payments are refunded or cancelled
+        // Additional check: Verify no finalized payments exist
+        // Note: pending_print and voided payments are allowed (they can be resumed or are cancelled)
         if ($citation['status'] === 'pending') {
             $sql = "SELECT COUNT(*) as active_payments FROM payments
                     WHERE citation_id = :citation_id
-                    AND status NOT IN ('refunded', 'cancelled')";
+                    AND status IN ('completed', 'pending')";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([':citation_id' => $citationId]);
             $check = $stmt->fetch();
